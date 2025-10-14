@@ -1,53 +1,71 @@
 <template>
-  <div class="side-bar flex flex-col justify-between">
+  <div :class="['side-bar flex flex-col justify-between', isShow && 'collapsed']">
     <ul class="flex flex-col gap-12">
-      <li class="flex gap-12 items-center px-4 py-3">
-        <span class="icon"><i class="fa-regular fa-file-text"></i></span>
-        <span class="label text-white">Tin tuyển dụng</span>
-      </li>
-      <li class="flex gap-12 items-center px-4 py-3 active">
-        <span class="icon"><i class="fa-regular fa-user"></i></span>
-        <span class="label text-white">Ứng viên</span>
-      </li>
-      <li class="flex gap-12 items-center px-4 py-3">
-        <span class="icon"><i class="fa-regular fa-calendar"></i></span>
-        <span class="label text-white">Lịch</span>
-      </li>
-      <li class="flex gap-12 items-center px-4 py-3">
-        <span class="icon"><i class="fa-solid fa-arrows-turn-right"></i></span>
-        <span class="label text-white">Kho tiềm năng</span>
-      </li>
-      <li class="flex gap-12 items-center px-4 py-3">
-        <span class="icon"><i class="fa-solid fa-chart-bar"></i></span>
-        <span class="label text-white">Chiến dịch tuyển dụng</span>
-      </li>
-      <li class="flex gap-12 items-center px-4 py-3">
-        <span class="icon"><i class="fa-solid fa-check-circle"></i></span>
-        <span class="label text-white">Công việc</span>
-      </li>
-      <li class="flex gap-12 items-center px-4 py-3">
-        <span class="icon"><i class="fa-regular fa-envelope"></i></span>
-        <span class="label text-white">aiMarketing</span>
-      </li>
-      <li class="flex gap-12 items-center px-4 py-3">
-        <span class="icon"><i class="fa-regular fa-comments"></i></span>
-        <span class="label text-white">Trao đổi với ứng viên</span>
-      </li>
-      <!-- <li class="flex gap-12 items-center px-4 py-3">
-            <span class="icon"><i class="fa-regular fa-clock"></i></span>
-            <span class="label text-white">Báo cáo</span>
-          </li> -->
+      <SidebarItem v-for="item in MENU_ITEMS" :item="item" :key="item.id" />
     </ul>
-
-    <button class="btn-toggle flex gap-24 items-center px-4 py-3 rounded-md text-btn text-white">
+    <button
+      @click="handleToggle"
+      class="btn-toggle flex gap-24 items-center px-4 py-3 rounded-md text-btn text-white"
+    >
       <span class="btn-toggle-icon"><i class="fa-solid fa-chevron-left"></i></span>
       <span class="btn-toggle-text"> Thu gọn </span>
     </button>
   </div>
 </template>
 
-<script>
-export default {}
+<script setup>
+import { ref } from 'vue'
+import SidebarItem from './SidebarItem.vue'
+
+const MENU_ITEMS = [
+  {
+    id: 0,
+    title: 'Tin tuyển dụng',
+    icon: '<i class="fa-regular fa-file-text"></i>',
+  },
+  {
+    id: 1,
+    title: 'Ứng viên',
+    icon: '<i class="fa-regular fa-user"></i>',
+    active: true,
+  },
+  {
+    id: 2,
+    title: 'Lịch',
+    icon: '<i class="fa-regular fa-calendar"></i>',
+  },
+  {
+    id: 3,
+    title: 'Kho tiềm năng',
+    icon: '<i class="fa-solid fa-arrows-turn-right"></i>',
+  },
+  {
+    id: 4,
+    title: 'Chiến dịch tuyển dụng',
+    icon: '<i class="fa-solid fa-chart-bar"></i>',
+  },
+  {
+    id: 5,
+    title: 'Công việc',
+    icon: '<i class="fa-solid fa-check-circle"></i>',
+  },
+  {
+    id: 6,
+    title: 'aiMarketing',
+    icon: '<i class="fa-regular fa-envelope"></i>',
+  },
+  {
+    id: 7,
+    title: 'Trao đổi với ứng viên',
+    icon: '<i class="fa-regular fa-comments"></i>',
+  },
+]
+
+const isShow = ref(true)
+
+const handleToggle = () => {
+  isShow.value = !isShow.value
+}
 </script>
 
 <style>
