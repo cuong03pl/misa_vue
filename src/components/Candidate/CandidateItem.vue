@@ -8,18 +8,20 @@
     </td>
     <td>
       <div class="avatar-cell">
-        <div class="avatar flex items-center justify-center text-secondary">${avatar}</div>
+        <div class="avatar flex items-center justify-center text-secondary">{{ avatar }}</div>
         <div class="user-info">
-          <div class="user-name">${item.CandidateName}</div>
+          <div class="user-name">{{ item.CandidateName }}</div>
         </div>
       </div>
     </td>
-    <td class="line-clamp-1">${item.Mobile}</td>
-    <td class="line-clamp-1">${item.Email}</td>
+    <td class="line-clamp-1">{{ item.Mobile }}</td>
+    <td class="line-clamp-1">{{ item.Email }}</td>
     <td>--</td>
-    <td class="line-clamp-1">${item.JobPositionName}</td>
-    <td class="line-clamp-1">${item.RecruitmentName}</td>
-    <td><span class="status">${item.RecruitmentRoundName}</span></td>
+    <td class="line-clamp-1">{{ item.JobPositionName }}</td>
+    <td class="line-clamp-1">{{ item.RecruitmentName }}</td>
+    <td>
+      <span class="status">{{ item.RecruitmentRoundName }}</span>
+    </td>
     <td>
       <div class="rating">
         <svg class="star" viewBox="0 0 24 24">
@@ -49,10 +51,19 @@
         </svg>
       </div>
     </td>
-    <td>${applyDate}</td>
+    <td>{{ applyDate }}</td>
   </tr>
-  <ConfirmModal :isOpenConfimModal="isOpenConfimModal" @click="(e) => (isOpenConfimModal = e)" />
-  <CandidateModal :isOpen="isOpen" @click="(e) => (isOpen = e)" />
+  <ConfirmModal :isOpenConfimModal="isOpenConfimModal" @click="(e) => (isOpenConfimModal = e)">
+    <template #content>
+      <p class="text-center mt-2">Bạn có chắc chắn muốn xóa ứng viên này?</p>
+    </template>
+  </ConfirmModal>
+  <CandidateModal :isOpen="isOpen" @click="(e) => (isOpen = e)">
+    <template #head>
+      <span class="text-3xl font-bold">Sửa ứng viên</span>
+      <span @click="handleToggleModal" class="icon"><i class="fa-solid fa-xmark"></i></span>
+    </template>
+  </CandidateModal>
 </template>
 
 <script setup>
@@ -60,7 +71,9 @@ import { ref } from 'vue'
 import Button from '../Button/Button.vue'
 import ConfirmModal from '../Modal/ConfirmModal.vue'
 import CandidateModal from '../Modal/CandidateModal.vue'
-
+defineProps({
+  item: Object,
+})
 const isOpenConfimModal = ref(false)
 const isOpen = ref(false)
 

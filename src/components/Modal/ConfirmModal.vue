@@ -10,11 +10,13 @@
                 ><i class="fa-solid fa-xmark"></i
               ></span>
             </div>
-            <p class="text-center mt-2">Bạn có chắc chắn muốn xóa ứng viên này?</p>
+            <slot name="content"> </slot>
           </div>
           <div class="modal-confirm-footer flex justify-end gap-12 px-5 py-4">
-            <Button btnCancel @click="emit('click', false)">Hủy</Button>
-            <Button btnDelete>Xóa</Button>
+            <slot name="footer">
+              <Button btnCancel @click="emit('click', false)">Hủy</Button>
+              <Button btnDelete>Xóa</Button>
+            </slot>
           </div>
         </div>
       </div>

@@ -3,10 +3,7 @@
     <table>
       <TableHeader hasCheckbox :data="Candidate_header" />
       <tbody>
-        <candidate-item />
-        <candidate-item />
-        <candidate-item />
-        <candidate-item />
+        <candidate-item v-for="item in Candidate_data" :item="item" :key="item?.CandidateID" />
       </tbody>
     </table>
   </div>
@@ -19,6 +16,7 @@ import { Candidate_header } from '@/config/header_data'
 import TableFooter from '../Table/TableFooter.vue'
 import TableHeader from '../Table/TableHeader.vue'
 import CandidateItem from './CandidateItem.vue'
+import { Candidate_data } from '@/config/data_example'
 </script>
 
 <style scoped>

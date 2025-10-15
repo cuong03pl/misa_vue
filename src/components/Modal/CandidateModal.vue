@@ -3,8 +3,10 @@
     <div class="modal-content rounded-md">
       <!-- head -->
       <div class="modal-head px-4 py-4 flex justify-between items-center">
-        <span class="text-3xl font-bold">Thêm ứng viên</span>
-        <span @click="emit('click', false)" class="icon"><i class="fa-solid fa-xmark"></i></span>
+        <slot name="head">
+          <span class="text-3xl font-bold">Thêm ứng viên</span>
+          <span @click="emit('click', false)" class="icon"><i class="fa-solid fa-xmark"></i></span>
+        </slot>
       </div>
       <div class="scroll px-4 py-4">
         <!-- upload -->
@@ -168,8 +170,10 @@
       </div>
 
       <div class="footer flex justify-end px-4 py-4 gap-12">
-        <Button btnCancel @click="emit('click', false)">Hủy</Button>
-        <Button btnPrimary>Lưu</Button>
+        <slot name="footer">
+          <Button btnCancel @click="emit('click', false)">Hủy</Button>
+          <Button btnPrimary>Lưu</Button>
+        </slot>
       </div>
     </div>
   </BaseModal>
