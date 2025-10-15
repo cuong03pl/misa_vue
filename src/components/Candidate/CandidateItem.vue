@@ -2,7 +2,7 @@
   <tr>
     <td><input type="checkbox" class="row-checkbox" /></td>
     <td>
-      <Button isOnlyIcon btnDelete>
+      <Button @click="handleToggleModal" isOnlyIcon btnDelete>
         <i class="fa-solid fa-trash-can"></i>
       </Button>
     </td>
@@ -51,10 +51,19 @@
     </td>
     <td>${applyDate}</td>
   </tr>
+  <ConfirmModal :isOpen="isOpen" @click="(e) => (isOpen = e)" />
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import Button from '../Button/Button.vue'
+import ConfirmModal from '../Modal/ConfirmModal.vue'
+
+const isOpen = ref(false)
+
+const handleToggleModal = () => {
+  isOpen.value = !isOpen.value
+}
 </script>
 
 <style scoped>

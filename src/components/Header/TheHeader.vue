@@ -9,12 +9,7 @@
         <img class="image" src="./images/logo.png" alt="" />
         <span class="text text-primary">Tuyển dụng</span>
       </div>
-      <div class="search flex items-center gap-12 px-3 py-2">
-        <span class="search_icon">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </span>
-        <input class="search_input" type="text" placeholder="Tìm kiếm và tuyển dụng" />
-      </div>
+      <Search />
     </div>
     <!-- Header right -->
     <div class="flex gap-12 header-right items-center">
@@ -36,8 +31,8 @@
   </div>
 </template>
 
-<script>
-export default {}
+<script setup>
+import Search from '../Search/Search.vue'
 </script>
 
 <style>
