@@ -3,7 +3,7 @@
     <!-- head -->
     <div class="flex justify-between create-button">
       <div class=""><span class="text-2xl font-bold">Ứng viên</span></div>
-      <Button btnTwoIcons btnPrimary large>
+      <Button btnTwoIcons btnPrimary large @click="hanleToggleModal">
         <template #left-icon>
           <span><i class="fa-solid fa-plus text-white"></i></span>
         </template>
@@ -91,10 +91,17 @@
       </div>
     </div>
   </div>
+  <CandidateModal :isOpen="isOpen" @click="(e) => (isOpen = e)" />
 </template>
 
 <script setup>
 import Button from '@/components/Button/Button.vue'
+import CandidateModal from '@/components/Modal/CandidateModal.vue'
+import { ref, watch } from 'vue'
+const isOpen = ref(false)
+const hanleToggleModal = () => {
+  isOpen.value = !isOpen.value
+}
 </script>
 
 <style scoped>
