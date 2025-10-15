@@ -5,7 +5,9 @@
       <div class="modal-head px-4 py-4 flex justify-between items-center">
         <slot name="head">
           <span class="text-3xl font-bold">Thêm ứng viên</span>
-          <span @click="emit('update:isOpen', false)" class="icon"><i class="fa-solid fa-xmark"></i></span>
+          <span @click="emit('update:isOpen', false)" class="icon"
+            ><i class="fa-solid fa-xmark"></i
+          ></span>
         </slot>
       </div>
       <div class="scroll px-4 py-4">
@@ -27,6 +29,8 @@
                 label="Họ và tên"
                 placeholder="Nhập họ và tên"
                 type="text"
+                name="fullname"
+                v-model="formData.fullname"
               />
             </div>
             <!-- ngày sinh, giới tính -->
@@ -60,10 +64,19 @@
                   label="Số điện thoại"
                   placeholder="Nhập số điện thoại"
                   type="text"
+                  name="phone"
+                  v-model="formData.phone"
                 />
               </div>
               <div class="form-input flex flex-1 flex-col">
-                <TextInput :isRequired="true" label="Email" placeholder="Nhập Email" type="text" />
+                <TextInput
+                  name="email"
+                  :isRequired="true"
+                  label="Email"
+                  placeholder="Nhập Email"
+                  type="text"
+                  v-model="formData.email"
+                />
               </div>
             </div>
             <!-- Địa chỉ -->
@@ -97,8 +110,7 @@
             <!-- apply date -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <span class="text-primary">Ngày ứng tuyển </span>
-                <input type="date" placeholder="" />
+                <TextInput label="Ngày ứng tuyển" type="date" />
               </div>
               <div class="select-list flex flex-1 flex-col">
                 <SelectList label="Nguồn ứng viên">
@@ -128,8 +140,11 @@
             <!-- Nơi làm việc gần đây -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <span class="text-primary">Nơi làm việc gần đây </span>
-                <input type="text" placeholder="Nhập nơi làm việc gần đây" />
+                <TextInput
+                  label="Nơi làm việc gần đây"
+                  placeholder="Nhập nơi làm việc gần đây"
+                  type="text"
+                />
               </div>
             </div>
             <!-- Thời gian  -->
@@ -155,6 +170,8 @@
                   label="Vị trí công việc"
                   placeholder="Nhập vị trí công việc"
                   type="text"
+                  name="position"
+                  v-model="formData.position"
                 />
               </div>
             </div>
@@ -172,7 +189,7 @@
       <div class="footer flex justify-end px-4 py-4 gap-12">
         <slot name="footer">
           <Button btnCancel @click="emit('update:isOpen', false)">Hủy</Button>
-          <Button btnPrimary>Lưu</Button>
+          <Button @click="handleSave" btnPrimary>Lưu</Button>
         </slot>
       </div>
     </div>
@@ -187,7 +204,17 @@ import BaseModal from './BaseModal.vue'
 defineProps({
   isOpen: Boolean,
 })
-const emit = defineEmits(['update:isOpen'])
+const emit = defineEmits(['update:isOpen', 'save'])
+const formData = {
+  fullname: '',
+  phone: '',
+  email: '',
+  position: '',
+}
+
+const handleSave = () => {
+  emit('save')
+}
 </script>
 
 <style>

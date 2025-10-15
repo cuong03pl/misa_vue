@@ -42,7 +42,7 @@
       </div>
     </div>
   </div>
-  <CandidateModal v-model:isOpen="isOpen" />
+  <CandidateModal v-model:isOpen="isOpen" @save="handleSave" />
 </template>
 
 <script setup>
@@ -54,6 +54,9 @@ import { ref } from 'vue'
 const isOpen = ref(false)
 const hanleToggleModal = () => {
   isOpen.value = !isOpen.value
+}
+const handleSave = (data) => {
+  console.log(data)
 }
 </script>
 
