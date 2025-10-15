@@ -3,13 +3,17 @@
     <!-- head -->
     <div class="flex justify-between create-button">
       <div class=""><span class="text-2xl font-bold">Ứng viên</span></div>
-      <button class="btn-icon flex justify-between items-center px-3 py-3 gap-12">
-        <span><i class="fa-solid fa-plus text-white"></i></span>
+      <Button btnTwoIcons btnPrimary large>
+        <template #left-icon>
+          <span><i class="fa-solid fa-plus text-white"></i></span>
+        </template>
         <span class="text-white text-btn">Thêm ứng viên</span>
-        <div class="dropdown flex items-center justify-between">
-          <i class="fa-solid fa-chevron-down"></i>
-        </div>
-      </button>
+        <template #right-icon>
+          <div class="dropdown flex items-center justify-between">
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+        </template>
+      </Button>
     </div>
     <!-- body -->
     <div class="data-section py-5 mt-5 rounded-md">
@@ -22,18 +26,18 @@
             </span>
             <input class="search_input" type="text" placeholder="Tìm kiếm và tuyển dụng" />
           </div>
-          <button class="btn-only-icon flex items-center justify-center px-3 py-2 rounded-md">
+          <Button isOnlyIcon>
             <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-          <button class="btn-only-icon flex items-center justify-center px-3 py-2 rounded-md">
+          </Button>
+          <Button isOnlyIcon>
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
-          </button>
-          <button class="btn-only-icon flex items-center justify-center px-3 py-2 rounded-md">
+          </Button>
+          <Button isOnlyIcon>
             <i class="fa-regular fa-chart-bar"></i>
-          </button>
-          <button class="btn-only-icon flex items-center justify-center px-3 py-2 rounded-md">
+          </Button>
+          <Button isOnlyIcon>
             <i class="fa-solid fa-gear"></i>
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -89,7 +93,9 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import Button from '@/components/Button/Button.vue'
+</script>
 
 <style scoped>
 .content {

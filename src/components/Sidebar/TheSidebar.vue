@@ -3,19 +3,19 @@
     <ul class="flex flex-col gap-12">
       <SidebarItem v-for="item in MENU_ITEMS" :item="item" :key="item.id" />
     </ul>
-    <button
-      @click="handleToggle"
-      class="btn-toggle flex gap-24 items-center px-4 py-3 rounded-md text-btn text-white"
-    >
-      <span class="btn-toggle-icon"><i class="fa-solid fa-chevron-left"></i></span>
-      <span class="btn-toggle-text"> Thu gọn </span>
-    </button>
+    <Button large btnPrimary @click="handleToggle">
+      <template #left-icon>
+        <i class="fa-solid fa-chevron-left"></i>
+      </template>
+      <span class="btn-toggle-text">Thu gọn</span>
+    </Button>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import SidebarItem from './SidebarItem.vue'
+import Button from '../Button/Button.vue'
 
 const MENU_ITEMS = [
   {
