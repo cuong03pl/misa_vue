@@ -1,5 +1,5 @@
 <template>
-  <tr @dblclick="handleToggleModal">
+  <tr @dblclick="handleToggleModal(item)">
     <td><input type="checkbox" class="row-checkbox" /></td>
     <td>
       <Button @click="handleToggleConfirmModal" isOnlyIcon btnDelete>
@@ -58,7 +58,7 @@
       <p class="text-center mt-2">Bạn có chắc chắn muốn xóa ứng viên này?</p>
     </template>
   </ConfirmModal>
-  <CandidateModal  v-model:isOpen="isOpen">
+  <CandidateModal @save="handleSave" :candidate="selectedCandidate" v-model:isOpen="isOpen">
     <template #head>
       <span class="text-3xl font-bold">Sửa ứng viên</span>
       <span @click="handleToggleModal" class="icon"><i class="fa-solid fa-xmark"></i></span>
@@ -76,12 +76,17 @@ defineProps({
 })
 const isOpenConfirmModal = ref(false)
 const isOpen = ref(false)
+const selectedCandidate = ref({})
 
 const handleToggleConfirmModal = () => {
   isOpenConfirmModal.value = !isOpenConfirmModal.value
 }
-const handleToggleModal = () => {
+const handleToggleModal = (item) => {
+  selectedCandidate.value = { ...item }
   isOpen.value = !isOpen.value
+}
+const handleSave = (data) => {
+  console.log(data)
 }
 </script>
 

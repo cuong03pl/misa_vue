@@ -30,7 +30,7 @@
                 placeholder="Nhập họ và tên"
                 type="text"
                 name="fullname"
-                v-model="formData.fullname"
+                v-model="formData.CandidateName"
               />
             </div>
             <!-- ngày sinh, giới tính -->
@@ -65,7 +65,7 @@
                   placeholder="Nhập số điện thoại"
                   type="text"
                   name="phone"
-                  v-model="formData.phone"
+                  v-model="formData.Mobile"
                 />
               </div>
               <div class="form-input flex flex-1 flex-col">
@@ -75,7 +75,7 @@
                   label="Email"
                   placeholder="Nhập Email"
                   type="text"
-                  v-model="formData.email"
+                  v-model="formData.Email"
                 />
               </div>
             </div>
@@ -171,7 +171,7 @@
                   placeholder="Nhập vị trí công việc"
                   type="text"
                   name="position"
-                  v-model="formData.position"
+                  v-model="formData.JobPositionName"
                 />
               </div>
             </div>
@@ -197,23 +197,32 @@
 </template>
 
 <script setup>
+import { reactive, watch } from 'vue'
 import Button from '../Button/Button.vue'
 import SelectList from '../FormField/SelectList.vue'
 import TextInput from '../FormField/TextInput.vue'
 import BaseModal from './BaseModal.vue'
-defineProps({
+const props = defineProps({
   isOpen: Boolean,
+  candidate: Object,
 })
 const emit = defineEmits(['update:isOpen', 'save'])
-const formData = {
-  fullname: '',
-  phone: '',
-  email: '',
-  position: '',
-}
+let formData = reactive({
+  CandidateName: '',
+  Mobile: '',
+  Email: '',
+  JobPositionName: '',
+})
+
+watch(
+  () => props.candidate,
+  (newVal) => {
+    Object.assign(formData, newVal)
+  },
+)
 
 const handleSave = () => {
-  emit('save')
+  emit('save', formData)
 }
 </script>
 
