@@ -20,56 +20,54 @@
           <div class="flex-1">
             <!-- name -->
             <div class="form-input flex flex-col">
-              <span class="text-primary">Họ và tên </span>
-              <input type="text" name="fullname" placeholder="Nhập họ và tên" />
-              <small class="error-text"></small>
+              <TextInput
+                :isRequired="true"
+                label="Họ và tên"
+                placeholder="Nhập họ và tên"
+                type="text"
+              />
             </div>
             <!-- ngày sinh, giới tính -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <span class="text-primary">Ngày sinh </span>
-                <input name="birthday" type="date" placeholder="" />
-                <small class="error-text"></small>
+                <TextInput :isRequired="true" label="Ngày sinh" type="date" />
               </div>
               <div class="select-list flex flex-1 flex-col">
-                <span class="text-primary">Chọn giới tính</span>
-                <select name="sex" id="sex">
+                <SelectList label="Chọn giới tính">
                   <option value="default">Chọn giới tính</option>
                   <option value="volvo">Nam</option>
                   <option value="saab">Nữ</option>
-                </select>
+                </SelectList>
               </div>
             </div>
             <!-- khu vực  -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="select-list flex flex-1 flex-col">
-                <span class="text-primary">Khu vực</span>
-                <select name="sex" id="sex">
-                  <option value="default">Chọn giá trị</option>
+                <SelectList label="Khu vực">
+                  <option value="default">Chọn giới tính</option>
                   <option value="volvo">Nam</option>
                   <option value="saab">Nữ</option>
-                </select>
+                </SelectList>
               </div>
             </div>
             <!-- SDT, Email -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <span class="text-primary">Số điện thoại </span>
-                <input name="phone" type="text" placeholder="Nhập số điện thoại" />
-                <small class="error-text"></small>
+                <TextInput
+                  :isRequired="true"
+                  label="Số điện thoại"
+                  placeholder="Nhập số điện thoại"
+                  type="text"
+                />
               </div>
               <div class="form-input flex flex-1 flex-col">
-                <span class="text-primary">Email </span>
-                <input name="email" type="text" placeholder="Nhập Email" />
-                <small class="error-text"></small>
+                <TextInput :isRequired="true" label="Email" placeholder="Nhập Email" type="text" />
               </div>
             </div>
             <!-- Địa chỉ -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <span class="text-primary">Địa chỉ </span>
-                <input name="address" type="text" placeholder="Nhập địa chỉ" />
-                <small class="error-text"></small>
+                <TextInput label="Địa chỉ" placeholder="Nhập địa chỉ" type="text" />
               </div>
             </div>
             <!-- Học vấn -->
@@ -78,20 +76,17 @@
               <ul class="flex flex-col gap-12">
                 <li>
                   <div class="flex items-center justify-between gap-12">
-                    <span>Trình độ đào tạo</span>
-                    <input class="flex flex-1" type="text" placeholder="Nhập địa chỉ" />
+                    <TextInput label="Trình độ đào tạo" placeholder="Nhập địa chỉ" type="text" />
                   </div>
                 </li>
                 <li>
                   <div class="flex items-center justify-between gap-12">
-                    <span>Trình độ đào tạo</span>
-                    <input class="flex flex-1" type="text" placeholder="Nhập địa chỉ" />
+                    <TextInput label="Trình độ đào tạo" placeholder="Nhập địa chỉ" type="text" />
                   </div>
                 </li>
                 <li>
                   <div class="flex items-center justify-between gap-12">
-                    <span>Trình độ đào tạo</span>
-                    <input class="flex flex-1" type="text" placeholder="Nhập địa chỉ" />
+                    <TextInput label="Trình độ đào tạo" placeholder="Nhập địa chỉ" type="text" />
                   </div>
                 </li>
               </ul>
@@ -104,31 +99,28 @@
                 <input type="date" placeholder="" />
               </div>
               <div class="select-list flex flex-1 flex-col">
-                <span class="text-primary">Nguồn ứng viên</span>
-                <select name="sex" id="sex">
+                <SelectList label="Nguồn ứng viên">
                   <option value="default">Chọn giới tính</option>
                   <option value="volvo">Nam</option>
                   <option value="saab">Nữ</option>
-                </select>
+                </SelectList>
               </div>
             </div>
             <!-- CTV -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="select-list flex flex-1 flex-col">
-                <span class="text-primary">Nhân sự khai thác</span>
-                <select name="sex" id="sex">
+                <SelectList label="Nhân sự khai thác">
                   <option value="default">Chọn giới tính</option>
                   <option value="volvo">Nam</option>
                   <option value="saab">Nữ</option>
-                </select>
+                </SelectList>
               </div>
               <div class="select-list flex flex-1 flex-col">
-                <span class="text-primary">Cộng tác viên</span>
-                <select name="sex" id="sex">
-                  <option value="default">Chọn cộng tác viên</option>
+                <SelectList label="Cộng tác viên">
+                  <option value="default">Chọn giới tính</option>
                   <option value="volvo">Nam</option>
                   <option value="saab">Nữ</option>
-                </select>
+                </SelectList>
               </div>
             </div>
             <!-- Nơi làm việc gần đây -->
@@ -142,10 +134,13 @@
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
                 <span class="text-primary">Thời gian </span>
-                <div class="flex gap-12 items-center">
-                  <input type="date" placeholder="" />
-                  <span>-</span>
-                  <input type="date" placeholder="" />
+                <div class="flex justify-between gap-12">
+                  <div class="flex-1">
+                    <TextInput label="" type="date" />
+                  </div>
+                  <div class="flex-1">
+                    <TextInput label="" type="date" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -153,9 +148,12 @@
             <!-- Vị trí công việc -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <span class="text-primary">Vị trí công việc</span>
-                <input name="job_position" type="text" placeholder="Nhập vị trí công việc" />
-                <small class="error-text"></small>
+                <TextInput
+                  :isRequired="true"
+                  label="Vị trí công việc"
+                  placeholder="Nhập vị trí công việc"
+                  type="text"
+                />
               </div>
             </div>
             <!-- Vị trí công việc -->
@@ -179,6 +177,8 @@
 
 <script setup>
 import Button from '../Button/Button.vue'
+import SelectList from '../FormField/SelectList.vue'
+import TextInput from '../FormField/TextInput.vue'
 import BaseModal from './BaseModal.vue'
 defineProps({
   isOpen: Boolean,

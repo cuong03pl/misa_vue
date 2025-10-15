@@ -1,5 +1,5 @@
 <template>
-  <div :class="['side-bar flex flex-col justify-between', isShow && 'collapsed']">
+  <div :class="['side-bar flex flex-col justify-between', !isShow && 'collapsed']">
     <ul class="flex flex-col gap-12">
       <SidebarItem v-for="item in MENU_ITEMS" :item="item" :key="item.id" />
     </ul>
