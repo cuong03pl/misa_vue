@@ -42,7 +42,7 @@
       </div>
     </div>
   </div>
-  <CandidateModal :isOpen="isOpen" @click="(e) => (isOpen = e)" />
+  <CandidateModal v-model:isOpen="isOpen" />
 </template>
 
 <script setup>

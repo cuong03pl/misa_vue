@@ -8,7 +8,7 @@
     </td>
     <td>
       <div class="avatar-cell">
-        <div class="avatar flex items-center justify-center text-secondary">{{ avatar }}</div>
+        <div class="avatar flex items-center justify-center text-secondary">{{ item?.avatar }}</div>
         <div class="user-info">
           <div class="user-name">{{ item.CandidateName }}</div>
         </div>
@@ -51,14 +51,14 @@
         </svg>
       </div>
     </td>
-    <td>{{ applyDate }}</td>
+    <td>{{ item?.applyDate }}</td>
   </tr>
-  <ConfirmModal :isOpenConfimModal="isOpenConfimModal" @click="(e) => (isOpenConfimModal = e)">
+  <ConfirmModal v-model:isOpenConfirmModal="isOpenConfirmModal">
     <template #content>
       <p class="text-center mt-2">Bạn có chắc chắn muốn xóa ứng viên này?</p>
     </template>
   </ConfirmModal>
-  <CandidateModal :isOpen="isOpen" @click="(e) => (isOpen = e)">
+  <CandidateModal  v-model:isOpen="isOpen">
     <template #head>
       <span class="text-3xl font-bold">Sửa ứng viên</span>
       <span @click="handleToggleModal" class="icon"><i class="fa-solid fa-xmark"></i></span>
@@ -74,11 +74,11 @@ import CandidateModal from '../Modal/CandidateModal.vue'
 defineProps({
   item: Object,
 })
-const isOpenConfimModal = ref(false)
+const isOpenConfirmModal = ref(false)
 const isOpen = ref(false)
 
 const handleToggleConfirmModal = () => {
-  isOpenConfimModal.value = !isOpenConfimModal.value
+  isOpenConfirmModal.value = !isOpenConfirmModal.value
 }
 const handleToggleModal = () => {
   isOpen.value = !isOpen.value

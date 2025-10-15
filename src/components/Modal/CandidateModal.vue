@@ -5,7 +5,7 @@
       <div class="modal-head px-4 py-4 flex justify-between items-center">
         <slot name="head">
           <span class="text-3xl font-bold">Thêm ứng viên</span>
-          <span @click="emit('click', false)" class="icon"><i class="fa-solid fa-xmark"></i></span>
+          <span @click="emit('update:isOpen', false)" class="icon"><i class="fa-solid fa-xmark"></i></span>
         </slot>
       </div>
       <div class="scroll px-4 py-4">
@@ -171,7 +171,7 @@
 
       <div class="footer flex justify-end px-4 py-4 gap-12">
         <slot name="footer">
-          <Button btnCancel @click="emit('click', false)">Hủy</Button>
+          <Button btnCancel @click="emit('update:isOpen', false)">Hủy</Button>
           <Button btnPrimary>Lưu</Button>
         </slot>
       </div>
@@ -187,7 +187,7 @@ import BaseModal from './BaseModal.vue'
 defineProps({
   isOpen: Boolean,
 })
-const emit = defineEmits(['click'])
+const emit = defineEmits(['update:isOpen'])
 </script>
 
 <style>

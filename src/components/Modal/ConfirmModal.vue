@@ -1,12 +1,12 @@
 <template>
-  <BaseModal :isOpen="isOpenConfimModal" to="body">
+  <BaseModal :isOpen="isOpenConfirmModal" to="body">
     <div class="modal-confirm">
       <div class="overlay">
         <div class="content rounded-md">
           <div class="modal-confirm-body px-5 py-5">
             <div class="flex justify-between items-center">
               <h3 class="text-center">Xác nhận xóa</h3>
-              <span @click="emit('click', false)" class="btn-close"
+              <span @click="emit('update:isOpenConfirmModal', false)" class="btn-close"
                 ><i class="fa-solid fa-xmark"></i
               ></span>
             </div>
@@ -14,7 +14,7 @@
           </div>
           <div class="modal-confirm-footer flex justify-end gap-12 px-5 py-4">
             <slot name="footer">
-              <Button btnCancel @click="emit('click', false)">Hủy</Button>
+              <Button btnCancel @click="emit('update:isOpenConfirmModal', false)">Hủy</Button>
               <Button btnDelete>Xóa</Button>
             </slot>
           </div>
@@ -28,30 +28,14 @@
 import Button from '../Button/Button.vue'
 import BaseModal from './BaseModal.vue'
 defineProps({
-  isOpenConfimModal: Boolean,
+  isOpenConfirmModal: Boolean,
 })
-const emit = defineEmits(['click'])
+const emit = defineEmits(['update:isOpenConfirmModal'])
 </script>
 
 <style scoped>
 /* Modal xác nhận xóa */
-.modal-confirm {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-}
 
-.modal-confirm .overlay {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .modal-confirm .content {
   background: white;
