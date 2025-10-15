@@ -1,8 +1,8 @@
 <template>
-  <tr>
+  <tr @dblclick="handleToggleModal">
     <td><input type="checkbox" class="row-checkbox" /></td>
     <td>
-      <Button @click="handleToggleModal" isOnlyIcon btnDelete>
+      <Button @click="handleToggleConfirmModal" isOnlyIcon btnDelete>
         <i class="fa-solid fa-trash-can"></i>
       </Button>
     </td>
@@ -51,16 +51,22 @@
     </td>
     <td>${applyDate}</td>
   </tr>
-  <ConfirmModal :isOpen="isOpen" @click="(e) => (isOpen = e)" />
+  <ConfirmModal :isOpenConfimModal="isOpenConfimModal" @click="(e) => (isOpenConfimModal = e)" />
+  <CandidateModal :isOpen="isOpen" @click="(e) => (isOpen = e)" />
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import Button from '../Button/Button.vue'
 import ConfirmModal from '../Modal/ConfirmModal.vue'
+import CandidateModal from '../Modal/CandidateModal.vue'
 
+const isOpenConfimModal = ref(false)
 const isOpen = ref(false)
 
+const handleToggleConfirmModal = () => {
+  isOpenConfimModal.value = !isOpenConfimModal.value
+}
 const handleToggleModal = () => {
   isOpen.value = !isOpen.value
 }

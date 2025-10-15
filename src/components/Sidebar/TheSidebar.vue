@@ -1,7 +1,7 @@
 <template>
   <div :class="['side-bar flex flex-col justify-between', !isShow && 'collapsed']">
     <ul class="flex flex-col gap-12">
-      <SidebarItem v-for="item in MENU_ITEMS" :item="item" :key="item.id" />
+      <SidebarItem v-for="item in sidebar_data" :item="item" :key="item.id" />
     </ul>
     <Button large btnPrimary @click="handleToggle">
       <template #left-icon>
@@ -16,50 +16,7 @@
 import { ref } from 'vue'
 import SidebarItem from './SidebarItem.vue'
 import Button from '../Button/Button.vue'
-
-const MENU_ITEMS = [
-  {
-    id: 0,
-    title: 'Tin tuyển dụng',
-    icon: '<i class="fa-regular fa-file-text"></i>',
-  },
-  {
-    id: 1,
-    title: 'Ứng viên',
-    icon: '<i class="fa-regular fa-user"></i>',
-    active: true,
-  },
-  {
-    id: 2,
-    title: 'Lịch',
-    icon: '<i class="fa-regular fa-calendar"></i>',
-  },
-  {
-    id: 3,
-    title: 'Kho tiềm năng',
-    icon: '<i class="fa-solid fa-arrows-turn-right"></i>',
-  },
-  {
-    id: 4,
-    title: 'Chiến dịch tuyển dụng',
-    icon: '<i class="fa-solid fa-chart-bar"></i>',
-  },
-  {
-    id: 5,
-    title: 'Công việc',
-    icon: '<i class="fa-solid fa-check-circle"></i>',
-  },
-  {
-    id: 6,
-    title: 'aiMarketing',
-    icon: '<i class="fa-regular fa-envelope"></i>',
-  },
-  {
-    id: 7,
-    title: 'Trao đổi với ứng viên',
-    icon: '<i class="fa-regular fa-comments"></i>',
-  },
-]
+import { sidebar_data } from '@/config/sidebar_data'
 
 const isShow = ref(true)
 

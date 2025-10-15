@@ -1,5 +1,5 @@
 <template>
-  <BaseModal :isOpen="isOpen" to="body">
+  <BaseModal :isOpen="isOpenConfimModal" to="body">
     <div class="modal-confirm">
       <div class="overlay">
         <div class="content rounded-md">
@@ -26,7 +26,7 @@
 import Button from '../Button/Button.vue'
 import BaseModal from './BaseModal.vue'
 defineProps({
-  isOpen: Boolean,
+  isOpenConfimModal: Boolean,
 })
 const emit = defineEmits(['click'])
 </script>
