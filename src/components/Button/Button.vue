@@ -1,5 +1,6 @@
 <template>
   <button
+    :type="type"
     @click="emit('click')"
     :class="[
       'text-btn gap-12 btn',
@@ -29,6 +30,7 @@ defineProps({
   btnTwoIcons: Boolean,
   large: Boolean,
   medium: Boolean,
+  type: String,
 })
 </script>
 

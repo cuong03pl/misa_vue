@@ -1,6 +1,6 @@
 <template>
   <BaseModal to="body" :isOpen="isOpen">
-    <div class="modal-content rounded-md">
+    <form @submit="onSubmit" class="modal-content rounded-md">
       <!-- head -->
       <div class="modal-head px-4 py-4 flex justify-between items-center">
         <slot name="head">
@@ -30,13 +30,15 @@
                 placeholder="Nhập họ và tên"
                 type="text"
                 name="fullname"
-                v-model="formData.CandidateName"
+                v-bind="fullnameAttrs"
+                v-model="fullname"
+                :error_message="errors.fullname"
               />
             </div>
             <!-- ngày sinh, giới tính -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <TextInput :isRequired="true" label="Ngày sinh" type="date" />
+                <TextInput label="Ngày sinh" type="date" />
               </div>
               <div class="select-list flex flex-1 flex-col">
                 <SelectList label="Chọn giới tính">
@@ -65,7 +67,9 @@
                   placeholder="Nhập số điện thoại"
                   type="text"
                   name="phone"
-                  v-model="formData.Mobile"
+                  v-model="phone"
+                  v-bind="phoneAttrs"
+                  :error_message="errors.phone"
                 />
               </div>
               <div class="form-input flex flex-1 flex-col">
@@ -75,7 +79,9 @@
                   label="Email"
                   placeholder="Nhập Email"
                   type="text"
-                  v-model="formData.Email"
+                  v-model="email"
+                  v-bind="emailAttrs"
+                  :error_message="errors.email"
                 />
               </div>
             </div>
@@ -171,7 +177,9 @@
                   placeholder="Nhập vị trí công việc"
                   type="text"
                   name="position"
-                  v-model="formData.JobPositionName"
+                  v-model="position"
+                  v-bind="positionAttrs"
+                  :error_message="errors.position"
                 />
               </div>
             </div>
@@ -189,41 +197,50 @@
       <div class="footer flex justify-end px-4 py-4 gap-12">
         <slot name="footer">
           <Button btnCancel @click="emit('update:isOpen', false)">Hủy</Button>
-          <Button @click="handleSave" btnPrimary>Lưu</Button>
+          <Button type="submit" btnPrimary>Lưu</Button>
         </slot>
       </div>
-    </div>
+    </form>
   </BaseModal>
 </template>
 
 <script setup>
-import { reactive, watch } from 'vue'
+import { candidateSchema } from '@/schemas/candidate.schema'
 import Button from '../Button/Button.vue'
 import SelectList from '../FormField/SelectList.vue'
 import TextInput from '../FormField/TextInput.vue'
 import BaseModal from './BaseModal.vue'
+import { useForm } from 'vee-validate'
+import { watch } from 'vue'
+
 const props = defineProps({
   isOpen: Boolean,
   candidate: Object,
 })
-const emit = defineEmits(['update:isOpen', 'save'])
-let formData = reactive({
-  CandidateName: '',
-  Mobile: '',
-  Email: '',
-  JobPositionName: '',
-})
-
 watch(
   () => props.candidate,
   (newVal) => {
-    Object.assign(formData, newVal)
+    fullname.value = newVal?.CandidateName || ''
+    phone.value = newVal?.Mobile || ''
+    email.value = newVal?.Email || ''
+    position.value = newVal?.JobPositionName || ''
   },
 )
 
-const handleSave = () => {
-  emit('save', formData)
-}
+const emit = defineEmits(['update:isOpen', 'save'])
+
+const { errors, handleSubmit, defineField } = useForm({
+  validationSchema: candidateSchema,
+})
+
+const [fullname, fullnameAttrs] = defineField('fullname')
+const [phone, phoneAttrs] = defineField('phone')
+const [email, emailAttrs] = defineField('email')
+const [position, positionAttrs] = defineField('position')
+
+const onSubmit = handleSubmit((values) => {
+  emit('save', values)
+})
 </script>
 
 <style>

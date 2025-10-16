@@ -60,12 +60,4 @@ td {
   color: var(--text-color);
   border-bottom: 1px solid #d5d6d9;
 }
-tbody tr {
-  transition: background-color 0.15s;
-  cursor: pointer;
-}
-
-tbody tr:hover {
-  background-color: var(--table-item-hover);
-}
 </style>

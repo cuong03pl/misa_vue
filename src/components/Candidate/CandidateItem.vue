@@ -8,7 +8,9 @@
     </td>
     <td>
       <div class="avatar-cell">
-        <div class="avatar flex items-center justify-center text-secondary">{{ item?.avatar }}</div>
+        <div class="avatar flex items-center justify-center text-secondary yellow">
+          {{ getAvatar(item.CandidateName) }}
+        </div>
         <div class="user-info">
           <div class="user-name">{{ item.CandidateName }}</div>
         </div>
@@ -71,6 +73,7 @@ import { ref } from 'vue'
 import Button from '../Button/Button.vue'
 import ConfirmModal from '../Modal/ConfirmModal.vue'
 import CandidateModal from '../Modal/CandidateModal.vue'
+import { getAvatar } from '@/utils/getAvatar'
 defineProps({
   item: Object,
 })
@@ -96,6 +99,14 @@ td {
   font-size: 14px;
   color: var(--text-color);
   border-bottom: 1px solid #d5d6d9;
+}
+tbody tr {
+  transition: background-color 0.15s;
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background-color: var(--table-item-hover);
 }
 /* Avatar */
 .avatar-cell {
