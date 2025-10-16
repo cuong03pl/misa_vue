@@ -1,11 +1,31 @@
 <template>
   <div class="table-container">
-    <table>
-      <TableHeader hasCheckbox :data="Candidate_header" />
-      <tbody>
-        <candidate-item v-for="item in Candidate_data" :item="item" :key="item?.CandidateID" />
-      </tbody>
-    </table>
+    <ms-table
+      @dblclick="handleToggleModal"
+      :hasCheckbox="true"
+      :headers="Candidate_header"
+      :rows="Candidate_data"
+    >
+      <template #cell-CandidateName="{ row }">
+        <div class="avatar-cell">
+          <div class="avatar flex items-center justify-center text-secondary yellow">
+            {{ getAvatar(row.CandidateName) }}
+          </div>
+          <div class="user-info">
+            <div class="user-name">{{ row.CandidateName }}</div>
+          </div>
+        </div>
+      </template>
+      <template #cell-RecruitmentRoundName="{ row }">
+        <span class="status">{{ row.RecruitmentRoundName }}</span>
+      </template>
+    </ms-table>
+    <CandidateModal @save="handleSave" :candidate="selectedCandidate" v-model:isOpen="isOpen">
+      <template #head>
+        <span class="text-3xl font-bold">Sửa ứng viên</span>
+        <span @click="handleToggleModal" class="icon"><i class="fa-solid fa-xmark"></i></span>
+      </template>
+    </CandidateModal>
   </div>
   <!-- table footer -->
   <TableFooter />
@@ -14,9 +34,20 @@
 <script setup>
 import { Candidate_header } from '@/config/header_data'
 import TableFooter from '../Table/TableFooter.vue'
-import TableHeader from '../Table/TableHeader.vue'
-import CandidateItem from './CandidateItem.vue'
 import { Candidate_data } from '@/config/data_example'
+import MsTable from '../Table/MsTable.vue'
+import { getAvatar } from '@/utils/getAvatar'
+import { ref } from 'vue'
+import CandidateModal from '../Modal/CandidateModal.vue'
+const isOpen = ref(false)
+const selectedCandidate = ref({})
+const handleToggleModal = (item) => {
+  selectedCandidate.value = { ...item }
+  isOpen.value = !isOpen.value
+}
+const handleSave = (data) => {
+  console.log(data)
+}
 </script>
 
 <style scoped>
@@ -59,5 +90,97 @@ td {
   font-size: 14px;
   color: var(--text-color);
   border-bottom: 1px solid #d5d6d9;
+}
+/* Avatar */
+.avatar-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  flex-shrink: 0;
+}
+
+.avatar.blue {
+  background: var(--btn-primary);
+}
+
+.avatar.yellow {
+  background: #fbbf24;
+}
+
+.avatar.green {
+  background: #4ade80;
+}
+
+.avatar.pink {
+  background: #f472b6;
+}
+
+.avatar.orange {
+  background: #fb923c;
+}
+
+.user-info {
+  display: flex;
+  gap: 4px;
+}
+
+.user-name {
+  font-weight: 500;
+  color: var(--text-color);
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.user-role {
+  font-size: 12px;
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge {
+  background: var(--btn-primary);
+  color: white;
+  padding: 4px 12px;
+  font-weight: 500;
+}
+
+.status {
+  display: inline-block;
+  border-radius: 16px;
+  font-weight: 500;
+}
+
+.rating {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  width: 16px;
+  height: 16px;
+  color: var(--border-secondary);
+}
+
+.star.filled {
+  color: #fbbf24;
+  fill: #fbbf24;
+}
+
+input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
 }
 </style>

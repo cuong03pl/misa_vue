@@ -3,20 +3,20 @@
     <ul class="flex flex-col gap-12">
       <SidebarItem v-for="item in sidebar_data" :item="item" :key="item.id" />
     </ul>
-    <Button large btnPrimary @click="handleToggle">
+    <BaseButton large btnPrimary @click="handleToggle">
       <template #left-icon>
         <i class="fa-solid fa-chevron-left"></i>
       </template>
       <span class="btn-toggle-text">Thu gọn</span>
-    </Button>
+    </BaseButton>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import SidebarItem from './SidebarItem.vue'
-import Button from '../Button/Button.vue'
 import { sidebar_data } from '@/config/sidebar_data'
+import BaseButton from '../BaseButton/BaseButton.vue'
 
 const isShow = ref(true)
 

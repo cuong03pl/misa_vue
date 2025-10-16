@@ -4,7 +4,7 @@
       <th v-show="hasCheckbox" style="width: 48px">
         <input type="checkbox" id="selectAll" />
       </th>
-      <th v-for="(item, index) in data" :key="index">{{ item }}</th>
+      <th v-for="(item, index) in data" :key="index">{{ item.title }}</th>
     </tr>
   </thead>
 </template>

@@ -3,7 +3,7 @@
     <!-- head -->
     <div class="flex justify-between create-button">
       <div class=""><span class="text-2xl font-bold">Ứng viên</span></div>
-      <Button btnTwoIcons btnPrimary large @click="hanleToggleModal">
+      <BaseButton btnTwoIcons btnPrimary large @click="hanleToggleModal">
         <template #left-icon>
           <span><i class="fa-solid fa-plus text-white"></i></span>
         </template>
@@ -13,7 +13,7 @@
             <i class="fa-solid fa-chevron-down"></i>
           </div>
         </template>
-      </Button>
+      </BaseButton>
     </div>
     <!-- body -->
     <div class="data-section py-5 mt-5 rounded-md">
@@ -21,18 +21,18 @@
       <div class="filter flex justify-end px-5">
         <div class="flex gap-12">
           <Search />
-          <Button isOnlyIcon>
+          <BaseButton isOnlyIcon>
             <i class="fa-solid fa-magnifying-glass"></i>
-          </Button>
-          <Button isOnlyIcon>
+          </BaseButton>
+          <BaseButton isOnlyIcon>
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
-          </Button>
-          <Button isOnlyIcon>
+          </BaseButton>
+          <BaseButton isOnlyIcon>
             <i class="fa-regular fa-chart-bar"></i>
-          </Button>
-          <Button isOnlyIcon>
+          </BaseButton>
+          <BaseButton isOnlyIcon>
             <i class="fa-solid fa-gear"></i>
-          </Button>
+          </BaseButton>
         </div>
       </div>
 
@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import Button from '@/components/Button/Button.vue'
+import BaseButton from '@/components/BaseButton/BaseButton.vue'
 import Candidate from '@/components/Candidate/Candidate.vue'
 import CandidateModal from '@/components/Modal/CandidateModal.vue'
 import Search from '@/components/Search/Search.vue'

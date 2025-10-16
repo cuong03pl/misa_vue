@@ -2,9 +2,9 @@
   <tr @dblclick="handleToggleModal(item)">
     <td><input type="checkbox" class="row-checkbox" /></td>
     <td>
-      <Button @click="handleToggleConfirmModal" isOnlyIcon btnDelete>
+      <BaseButton @click="handleToggleConfirmModal" isOnlyIcon btnDelete>
         <i class="fa-solid fa-trash-can"></i>
-      </Button>
+      </BaseButton>
     </td>
     <td>
       <div class="avatar-cell">
@@ -70,10 +70,10 @@
 
 <script setup>
 import { ref } from 'vue'
-import Button from '../Button/Button.vue'
 import ConfirmModal from '../Modal/ConfirmModal.vue'
 import CandidateModal from '../Modal/CandidateModal.vue'
 import { getAvatar } from '@/utils/getAvatar'
+import BaseButton from '../BaseButton/BaseButton.vue'
 defineProps({
   item: Object,
 })

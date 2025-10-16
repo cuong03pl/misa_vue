@@ -196,8 +196,8 @@
 
       <div class="footer flex justify-end px-4 py-4 gap-12">
         <slot name="footer">
-          <Button btnCancel @click="emit('update:isOpen', false)">Hủy</Button>
-          <Button type="submit" btnPrimary>Lưu</Button>
+          <BaseButton btnCancel @click="emit('update:isOpen', false)">Hủy</BaseButton>
+          <BaseButton type="submit" btnPrimary>Lưu</BaseButton>
         </slot>
       </div>
     </form>
@@ -206,12 +206,12 @@
 
 <script setup>
 import { candidateSchema } from '@/schemas/candidate.schema'
-import Button from '../Button/Button.vue'
 import SelectList from '../FormField/SelectList.vue'
 import TextInput from '../FormField/TextInput.vue'
 import BaseModal from './BaseModal.vue'
 import { useForm } from 'vee-validate'
 import { watch } from 'vue'
+import BaseButton from '../BaseButton/BaseButton.vue'
 
 const props = defineProps({
   isOpen: Boolean,

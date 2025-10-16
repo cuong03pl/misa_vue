@@ -14,17 +14,17 @@
         <span>1 - 25 bản ghi</span>
       </div>
       <div class="pagination">
-        <button disabled>
+        <BaseButton disabled>
           <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button><i class="fa-solid fa-chevron-right"></i></button>
+        </BaseButton>
+        <BaseButton><i class="fa-solid fa-chevron-right"></i></BaseButton>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {}
+<script setup>
+import BaseButton from '../BaseButton/BaseButton.vue'
 </script>
 
 <style>

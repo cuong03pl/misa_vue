@@ -14,8 +14,10 @@
           </div>
           <div class="modal-confirm-footer flex justify-end gap-12 px-5 py-4">
             <slot name="footer">
-              <Button btnCancel @click="emit('update:isOpenConfirmModal', false)">Hủy</Button>
-              <Button btnDelete>Xóa</Button>
+              <BaseButton btnCancel @click="emit('update:isOpenConfirmModal', false)"
+                >Hủy</BaseButton
+              >
+              <BaseButton btnDelete>Xóa</BaseButton>
             </slot>
           </div>
         </div>
@@ -25,7 +27,7 @@
 </template>
 
 <script setup>
-import Button from '../Button/Button.vue'
+import BaseButton from '../BaseButton/BaseButton.vue'
 import BaseModal from './BaseModal.vue'
 defineProps({
   isOpenConfirmModal: Boolean,
@@ -35,7 +37,6 @@ const emit = defineEmits(['update:isOpenConfirmModal'])
 
 <style scoped>
 /* Modal xác nhận xóa */
-
 
 .modal-confirm .content {
   background: white;
