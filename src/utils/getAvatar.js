@@ -1,5 +1,6 @@
 export const getAvatar = (fullName) => {
-  const firstName = fullName.split(' ')[0]
-  const lastName = fullName.split(' ')[1]
-  return firstName.charAt(0) + lastName.charAt(0)
+  const parts = fullName.trim().split(' ').filter(Boolean)
+  if (parts.length === 0) return ''
+  if (parts.length === 1) return parts[0].charAt(0).toUpperCase()
+  return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase()
 }

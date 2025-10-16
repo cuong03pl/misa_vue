@@ -38,7 +38,7 @@
 
       <!-- table -->
       <div class="table mt-5">
-        <Candidate />
+        <MSCandidateTable />
       </div>
     </div>
   </div>
@@ -47,10 +47,10 @@
 
 <script setup>
 import BaseButton from '@/components/BaseButton/BaseButton.vue'
-import Candidate from '@/components/Candidate/Candidate.vue'
 import CandidateModal from '@/components/Modal/CandidateModal.vue'
 import Search from '@/components/Search/Search.vue'
 import { ref } from 'vue'
+import MSCandidateTable from './components/MSCandidateTable.vue'
 const isOpen = ref(false)
 const hanleToggleModal = () => {
   isOpen.value = !isOpen.value

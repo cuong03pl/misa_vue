@@ -3,10 +3,10 @@
     <!-- Header left -->
     <div class="flex items-center h-full gap-24">
       <!-- menu  -->
-      <div class="menu icon"><i class="fa-solid fa-bars"></i></div>
+      <div class="menu icon menu-icon"></div>
       <!-- logo -->
       <div class="logo flex items-center gap-24">
-        <img class="image" src="./images/logo.png" alt="" />
+        <img class="image" src="" alt="" />
         <span class="text text-primary">Tuyển dụng</span>
       </div>
       <Search />
@@ -25,7 +25,7 @@
       <span class="icon"><i class="fa-regular fa-square-minus"></i></span>
 
       <div class="avatar">
-        <img src="./images/avatar.jpg" alt="" />
+        <img src="" alt="" />
       </div>
     </div>
   </div>

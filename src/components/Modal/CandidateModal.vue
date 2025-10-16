@@ -217,6 +217,7 @@ const props = defineProps({
   isOpen: Boolean,
   candidate: Object,
 })
+
 watch(
   () => props.candidate,
   (newVal) => {

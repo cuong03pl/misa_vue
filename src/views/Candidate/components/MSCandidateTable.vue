@@ -33,15 +33,17 @@
 
 <script setup>
 import { Candidate_header } from '@/config/header_data'
-import TableFooter from '../Table/TableFooter.vue'
 import { Candidate_data } from '@/config/data_example'
-import MsTable from '../Table/MsTable.vue'
 import { getAvatar } from '@/utils/getAvatar'
 import { ref } from 'vue'
-import CandidateModal from '../Modal/CandidateModal.vue'
+import CandidateModal from '@/components/Modal/CandidateModal.vue'
+import TableFooter from '@/components/Table/TableFooter.vue'
+import MsTable from '@/components/Table/MsTable.vue'
 const isOpen = ref(false)
 const selectedCandidate = ref({})
 const handleToggleModal = (item) => {
+  console.log(item)
+
   selectedCandidate.value = { ...item }
   isOpen.value = !isOpen.value
 }
