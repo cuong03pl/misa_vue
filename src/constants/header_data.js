@@ -42,6 +42,6 @@ export const Candidate_header = [
   {
     field: 'applyDate',
     title: 'Ngày ứng tuyển',
-    type: 'text',
+    type: 'date',
   },
 ]

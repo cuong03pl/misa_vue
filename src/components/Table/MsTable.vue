@@ -8,6 +8,7 @@
         </td>
         <td class="line-clamp-1" v-for="header in headers" :key="header.field">
           <slot :name="`cell-${header.field}`" :row="row" :value="row[header.field]">
+            <!-- Xử lý format theo type -->
             {{ row[header.field] }}
           </slot>
         </td>

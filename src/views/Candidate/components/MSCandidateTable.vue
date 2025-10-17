@@ -4,7 +4,7 @@
       @dblclick="handleToggleModal"
       :hasCheckbox="true"
       :headers="Candidate_header"
-      :rows="Candidate_data"
+      :rows="candidates"
     >
       <template #cell-CandidateName="{ row }">
         <div class="avatar-cell">
@@ -40,12 +40,18 @@ import CandidateModal from '@/components/Modal/CandidateModal.vue'
 import TableFooter from '@/components/Table/TableFooter.vue'
 import MsTable from '@/components/Table/MsTable.vue'
 import { useI18n } from 'vue-i18n'
+
+defineProps({
+  candidates: {
+    type: Array,
+    default: () => [],
+  },
+})
+
 const { t } = useI18n()
 const isOpen = ref(false)
 const selectedCandidate = ref({})
 const handleToggleModal = (item) => {
-  console.log(item)
-
   selectedCandidate.value = { ...item }
   isOpen.value = !isOpen.value
 }

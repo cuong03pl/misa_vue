@@ -22,7 +22,7 @@
       <!-- filter -->
       <div class="filter flex justify-end px-5">
         <div class="flex gap-12">
-          <Search :placeholder="t('common.searchPlaceholder')" />
+          <Search v-model="q" :placeholder="t('common.searchPlaceholder')" />
           <BaseButton isOnlyIcon>
             <i class="fa-solid fa-magnifying-glass"></i>
           </BaseButton>
@@ -40,7 +40,7 @@
 
       <!-- table -->
       <div class="table mt-5">
-        <MSCandidateTable />
+        <MSCandidateTable :candidates="candidates" />
       </div>
     </div>
   </div>
@@ -51,11 +51,26 @@
 import BaseButton from '@/components/BaseButton/BaseButton.vue'
 import CandidateModal from '@/components/Modal/CandidateModal.vue'
 import Search from '@/components/Search/Search.vue'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import MSCandidateTable from './components/MSCandidateTable.vue'
 import { useI18n } from 'vue-i18n'
+import { Candidate_data } from '@/constants/data_example'
+import _ from 'lodash'
 const { t } = useI18n()
 const isOpen = ref(false)
+const candidates = ref([...Candidate_data])
+const q = ref('')
+const fetchData = (newVal) => {
+  candidates.value = Candidate_data.filter((item) =>
+    item.CandidateName.toLowerCase().includes(newVal.toLowerCase()),
+  )
+}
+
+const debouncedFetch = _.debounce(fetchData, 500)
+watch(q, (newVal) => {
+  debouncedFetch(newVal)
+})
+
 const hanleToggleModal = () => {
   isOpen.value = !isOpen.value
 }

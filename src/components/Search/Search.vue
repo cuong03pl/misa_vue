@@ -3,7 +3,13 @@
     <span class="search_icon">
       <i class="fa-solid fa-magnifying-glass"></i>
     </span>
-    <input class="search_input" type="text" :placeholder="placeholder" />
+    <input
+      :value="modelValue"
+      @input="emit('update:modelValue', $event.target.value)"
+      class="search_input"
+      type="text"
+      :placeholder="placeholder"
+    />
   </div>
 </template>
 
@@ -13,7 +19,12 @@ defineProps({
     type: String,
     default: 'Tìm kiếm',
   },
+  modelValue: {
+    type: String,
+    default: '',
+  },
 })
+const emit = defineEmits(['update:modelValue'])
 </script>
 
 <style>
