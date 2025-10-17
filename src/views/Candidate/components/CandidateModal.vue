@@ -4,7 +4,11 @@
       <!-- head -->
       <div class="modal-head px-4 py-4 flex justify-between items-center">
         <slot name="head">
-          <span class="text-3xl font-bold">{{ t('common.button.add', { msg: 'ứng viên' }) }}</span>
+          <span class="text-3xl font-bold">{{
+            mode !== 'edit'
+              ? t('common.button.add', { msg: 'ứng viên' })
+              : t('common.button.edit', { msg: 'ứng viên' })
+          }}</span>
           <span @click="emit('update:isOpen', false)" class="icon"
             ><i class="fa-solid fa-xmark"></i
           ></span>
@@ -208,17 +212,18 @@
 
 <script setup>
 import { candidateSchema } from '@/schemas/candidate.schema'
-import SelectList from '../FormField/SelectList.vue'
-import TextInput from '../FormField/TextInput.vue'
-import BaseModal from './BaseModal.vue'
+import SelectList from '../../../components/FormField/SelectList.vue'
+import TextInput from '../../../components/FormField/TextInput.vue'
+import BaseModal from '../../../components/Modal/BaseModal.vue'
 import { useForm } from 'vee-validate'
 import { watch } from 'vue'
-import BaseButton from '../BaseButton/BaseButton.vue'
+import BaseButton from '../../../components/BaseButton/BaseButton.vue'
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const props = defineProps({
   isOpen: Boolean,
   candidate: Object,
+  mode: String,
 })
 
 watch(

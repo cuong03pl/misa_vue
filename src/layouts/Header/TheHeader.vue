@@ -32,8 +32,8 @@
 </template>
 
 <script setup>
+import Search from '@/components/Search/Search.vue'
 import { useI18n } from 'vue-i18n'
-import Search from '../Search/Search.vue'
 const { t } = useI18n()
 </script>
 

@@ -49,10 +49,10 @@
 
 <script setup>
 import BaseButton from '@/components/BaseButton/BaseButton.vue'
-import CandidateModal from '@/components/Modal/CandidateModal.vue'
+import CandidateModal from '@/views/Candidate/components/CandidateModal.vue'
 import Search from '@/components/Search/Search.vue'
 import { ref, watch } from 'vue'
-import MSCandidateTable from './components/MSCandidateTable.vue'
+import MSCandidateTable from './components/CandidateTable.vue'
 import { useI18n } from 'vue-i18n'
 import { Candidate_data } from '@/constants/data_example'
 import _ from 'lodash'

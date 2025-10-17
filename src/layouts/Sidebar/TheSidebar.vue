@@ -14,10 +14,10 @@
 
 <script setup>
 import { ref } from 'vue'
-import SidebarItem from './SidebarItem.vue'
 import { sidebar_data } from '@/constants/sidebar_data'
-import BaseButton from '../BaseButton/BaseButton.vue'
 import { useI18n } from 'vue-i18n'
+import BaseButton from '@/components/BaseButton/BaseButton.vue'
+import SidebarItem from './SidebarItem.vue'
 const { t } = useI18n()
 const isShow = ref(true)
 
