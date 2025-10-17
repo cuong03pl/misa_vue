@@ -2,7 +2,7 @@ export const Candidate_header = [
   {
     field: 'CandidateID',
     title: '',
-    type: 'checkbox',
+    type: 'text',
   },
   {
     field: 'CandidateName',
@@ -12,7 +12,7 @@ export const Candidate_header = [
   {
     field: 'Mobile',
     title: 'Số điện thoại',
-    type: 'text',
+    type: 'phone',
   },
   {
     field: 'Email',

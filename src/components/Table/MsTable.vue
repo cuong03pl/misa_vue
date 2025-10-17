@@ -7,9 +7,14 @@
           <input type="checkbox" class="row-checkbox" />
         </td>
         <td class="line-clamp-1" v-for="header in headers" :key="header.field">
-          <slot :name="`cell-${header.field}`" :row="row" :value="row[header.field]">
+          <slot
+            :name="`cell-${header.field}`"
+            :row="row"
+            :value="formatter[header.type](row[header.field])"
+          >
             <!-- Xử lý format theo type -->
-            {{ row[header.field] }}
+            {{ formatter[header.type](row[header.field]) }}
+            <!-- {{ row[header.field] }} -->
           </slot>
         </td>
       </tr>
@@ -18,6 +23,7 @@
 </template>
 
 <script setup>
+import { formatter } from '@/utils/formatter'
 import TableHeader from './TableHeader.vue'
 
 defineProps({

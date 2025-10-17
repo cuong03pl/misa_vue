@@ -6,18 +6,18 @@
       :headers="Candidate_header"
       :rows="candidates"
     >
-      <template #cell-CandidateName="{ row }">
+      <template #cell-CandidateName="{ value }">
         <div class="avatar-cell">
           <div class="avatar flex items-center justify-center text-secondary yellow">
-            {{ getAvatar(row.CandidateName) }}
+            {{ getAvatar(value) }}
           </div>
           <div class="user-info">
-            <div class="user-name">{{ row.CandidateName }}</div>
+            <div class="user-name">{{ value }}</div>
           </div>
         </div>
       </template>
-      <template #cell-RecruitmentRoundName="{ row }">
-        <span class="status">{{ row.RecruitmentRoundName }}</span>
+      <template #cell-RecruitmentRoundName="{ value }">
+        <span class="status">{{ value }}</span>
       </template>
     </ms-table>
     <CandidateModal
