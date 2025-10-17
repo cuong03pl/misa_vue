@@ -3,12 +3,17 @@
     <span class="search_icon">
       <i class="fa-solid fa-magnifying-glass"></i>
     </span>
-    <input class="search_input" type="text" placeholder="Tìm kiếm và tuyển dụng" />
+    <input class="search_input" type="text" :placeholder="placeholder" />
   </div>
 </template>
 
-<script>
-export default {}
+<script setup>
+defineProps({
+  placeholder: {
+    type: String,
+    default: 'Tìm kiếm',
+  },
+})
 </script>
 
 <style>

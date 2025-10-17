@@ -4,7 +4,7 @@
       <!-- head -->
       <div class="modal-head px-4 py-4 flex justify-between items-center">
         <slot name="head">
-          <span class="text-3xl font-bold">Thêm ứng viên</span>
+          <span class="text-3xl font-bold">{{ t('common.button.add', { msg: 'ứng viên' }) }}</span>
           <span @click="emit('update:isOpen', false)" class="icon"
             ><i class="fa-solid fa-xmark"></i
           ></span>
@@ -196,8 +196,10 @@
 
       <div class="footer flex justify-end px-4 py-4 gap-12">
         <slot name="footer">
-          <BaseButton btnCancel @click="emit('update:isOpen', false)">Hủy</BaseButton>
-          <BaseButton type="submit" btnPrimary>Lưu</BaseButton>
+          <BaseButton btnCancel @click="emit('update:isOpen', false)">{{
+            t('common.button.cancel')
+          }}</BaseButton>
+          <BaseButton type="submit" btnPrimary>{{ t('common.button.save') }}</BaseButton>
         </slot>
       </div>
     </form>
@@ -212,7 +214,8 @@ import BaseModal from './BaseModal.vue'
 import { useForm } from 'vee-validate'
 import { watch } from 'vue'
 import BaseButton from '../BaseButton/BaseButton.vue'
-
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const props = defineProps({
   isOpen: Boolean,
   candidate: Object,
@@ -231,7 +234,7 @@ watch(
 const emit = defineEmits(['update:isOpen', 'save'])
 
 const { errors, handleSubmit, defineField } = useForm({
-  validationSchema: candidateSchema,
+  validationSchema: candidateSchema(t),
 })
 
 const [fullname, fullnameAttrs] = defineField('fullname')

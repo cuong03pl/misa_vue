@@ -5,7 +5,7 @@
         <div class="content rounded-md">
           <div class="modal-confirm-body px-5 py-5">
             <div class="flex justify-between items-center">
-              <h3 class="text-center">Xác nhận xóa</h3>
+              <h3 class="text-center">{{ t('common.confirm_delete') }}</h3>
               <span @click="emit('update:isOpenConfirmModal', false)" class="btn-close"
                 ><i class="fa-solid fa-xmark"></i
               ></span>
@@ -14,10 +14,10 @@
           </div>
           <div class="modal-confirm-footer flex justify-end gap-12 px-5 py-4">
             <slot name="footer">
-              <BaseButton btnCancel @click="emit('update:isOpenConfirmModal', false)"
-                >Hủy</BaseButton
-              >
-              <BaseButton btnDelete>Xóa</BaseButton>
+              <BaseButton btnCancel @click="emit('update:isOpenConfirmModal', false)">{{
+                t('common.button.cancel')
+              }}</BaseButton>
+              <BaseButton btnDelete>{{ t('common.button.delete') }}</BaseButton>
             </slot>
           </div>
         </div>
@@ -27,8 +27,10 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
 import BaseButton from '../BaseButton/BaseButton.vue'
 import BaseModal from './BaseModal.vue'
+const { t } = useI18n()
 defineProps({
   isOpenConfirmModal: Boolean,
 })

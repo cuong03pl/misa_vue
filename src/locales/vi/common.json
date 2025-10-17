@@ -1,0 +1,12 @@
+{
+  "searchPlaceholder": "Tìm kiếm nhân viên...",
+  "confirm_delete": "Xác nhận xóa",
+  "button": {
+    "add": "Thêm {msg}",
+    "edit": "Sửa {msg}",
+    "delete": "Xoá {msg}",
+    "cancel": "Huỷ",
+    "save": "Lưu"
+  },
+  "collapse": "Thu gọn"
+}

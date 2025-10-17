@@ -1,0 +1,10 @@
+{
+  "title": "Ứng viên",
+  "errors": {
+    "fullname_required": "Họ và tên không được để trống",
+    "phone_required": "Số điện thoại không được để trống",
+    "email_invalid": "Email không đúng định dạng",
+    "email_required": "Email không được để trống",
+    "position_required": "Vị trí không được để trống"
+  }
+}

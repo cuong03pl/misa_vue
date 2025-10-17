@@ -22,7 +22,7 @@
     </ms-table>
     <CandidateModal @save="handleSave" :candidate="selectedCandidate" v-model:isOpen="isOpen">
       <template #head>
-        <span class="text-3xl font-bold">Sửa ứng viên</span>
+        <span class="text-3xl font-bold">{{ t('common.button.edit', { msg: 'ứng viên' }) }}</span>
         <span @click="handleToggleModal" class="icon"><i class="fa-solid fa-xmark"></i></span>
       </template>
     </CandidateModal>
@@ -32,13 +32,15 @@
 </template>
 
 <script setup>
-import { Candidate_header } from '@/config/header_data'
-import { Candidate_data } from '@/config/data_example'
+import { Candidate_header } from '@/constants/header_data'
+import { Candidate_data } from '@/constants/data_example'
 import { getAvatar } from '@/utils/getAvatar'
 import { ref } from 'vue'
 import CandidateModal from '@/components/Modal/CandidateModal.vue'
 import TableFooter from '@/components/Table/TableFooter.vue'
 import MsTable from '@/components/Table/MsTable.vue'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const isOpen = ref(false)
 const selectedCandidate = ref({})
 const handleToggleModal = (item) => {

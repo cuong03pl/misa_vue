@@ -7,14 +7,14 @@
       <!-- logo -->
       <div class="logo flex items-center gap-24">
         <img class="image" src="" alt="" />
-        <span class="text text-primary">Tuyển dụng</span>
+        <span class="text text-primary">{{ t('header.title') }}</span>
       </div>
-      <Search />
+      <Search :placeholder="t('common.searchPlaceholder')" />
     </div>
     <!-- Header right -->
     <div class="flex gap-12 header-right items-center">
       <span class="icon"><i class="fa-solid fa-earth-americas"></i></span>
-      <span class="text">Website tuyển dụng</span>
+      <span class="text">{{ t('header.link') }}</span>
       <span class="icon notification-icon">
         <i class="fa-regular fa-bell"></i>
       </span>
@@ -32,7 +32,9 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
 import Search from '../Search/Search.vue'
+const { t } = useI18n()
 </script>
 
 <style>

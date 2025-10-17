@@ -2,12 +2,14 @@
   <div class="content p-6">
     <!-- head -->
     <div class="flex justify-between create-button">
-      <div class=""><span class="text-2xl font-bold">Ứng viên</span></div>
+      <div class="">
+        <span class="text-2xl font-bold">{{ t('candidate.title') }}</span>
+      </div>
       <BaseButton btnTwoIcons btnPrimary large @click="hanleToggleModal">
         <template #left-icon>
           <span><i class="fa-solid fa-plus text-white"></i></span>
         </template>
-        <span class="text-white text-btn">Thêm ứng viên</span>
+        <span class="text-white text-btn">{{ t('common.button.add', { msg: 'ứng viên' }) }}</span>
         <template #right-icon>
           <div class="dropdown flex items-center justify-between">
             <i class="fa-solid fa-chevron-down"></i>
@@ -20,7 +22,7 @@
       <!-- filter -->
       <div class="filter flex justify-end px-5">
         <div class="flex gap-12">
-          <Search />
+          <Search :placeholder="t('common.searchPlaceholder')" />
           <BaseButton isOnlyIcon>
             <i class="fa-solid fa-magnifying-glass"></i>
           </BaseButton>
@@ -51,6 +53,8 @@ import CandidateModal from '@/components/Modal/CandidateModal.vue'
 import Search from '@/components/Search/Search.vue'
 import { ref } from 'vue'
 import MSCandidateTable from './components/MSCandidateTable.vue'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const isOpen = ref(false)
 const hanleToggleModal = () => {
   isOpen.value = !isOpen.value
