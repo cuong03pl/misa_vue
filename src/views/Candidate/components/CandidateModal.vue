@@ -42,13 +42,18 @@
             <!-- ngày sinh, giới tính -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <TextInput label="Ngày sinh" type="date" />
+                <TextInput
+                  v-model="birthday"
+                  v-bind="birthdayAttrs"
+                  label="Ngày sinh"
+                  type="date"
+                />
               </div>
               <div class="select-list flex flex-1 flex-col">
-                <SelectList label="Chọn giới tính">
+                <SelectList v-model="gender" label="Chọn giới tính">
                   <option value="default">Chọn giới tính</option>
-                  <option value="volvo">Nam</option>
-                  <option value="saab">Nữ</option>
+                  <option :value="Gender.MALE">Nam</option>
+                  <option :value="Gender.FEMALE">Nữ</option>
                 </SelectList>
               </div>
             </div>
@@ -219,6 +224,7 @@ import { useForm } from 'vee-validate'
 import { watch } from 'vue'
 import BaseButton from '../../../components/BaseButton/BaseButton.vue'
 import { useI18n } from 'vue-i18n'
+import { Gender } from '@/constants/enum'
 const { t } = useI18n()
 const props = defineProps({
   isOpen: Boolean,
@@ -233,6 +239,8 @@ watch(
     phone.value = newVal?.Mobile || ''
     email.value = newVal?.Email || ''
     position.value = newVal?.JobPositionName || ''
+    birthday.value = newVal?.Birthday || ''
+    gender.value = newVal.Gender || ''
   },
 )
 
@@ -246,6 +254,8 @@ const [fullname, fullnameAttrs] = defineField('fullname')
 const [phone, phoneAttrs] = defineField('phone')
 const [email, emailAttrs] = defineField('email')
 const [position, positionAttrs] = defineField('position')
+const [birthday, birthdayAttrs] = defineField('birthday')
+const [gender, genderAttrs] = defineField('gender')
 
 const onSubmit = handleSubmit((values) => {
   emit('save', values)
