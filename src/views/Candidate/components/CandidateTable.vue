@@ -6,13 +6,18 @@
       :headers="Candidate_header"
       :rows="candidates"
     >
-      <template #cell-CandidateName="{ value }">
+      <template #cell-CandidateName="{ row, value }">
         <div class="avatar-cell">
           <div class="avatar flex items-center justify-center text-secondary yellow">
             {{ getAvatar(value) }}
           </div>
-          <div class="user-info">
+          <div :class="['user-info', row.isRecruited ? 'flex-col gap-2' : '']">
             <div class="user-name">{{ value }}</div>
+            <div v-if="row.isRecruited" class="recruited flex items-center gap-6">
+              <i class="fa-solid fa-check"></i> <span>Nhân viên</span>
+            </div>
+            <div v-if="row.hasMessage" class=""><i class="fa-regular fa-envelope"></i></div>
+            <!-- <div v-if="row.isNew" class="new">Mới</div> -->
           </div>
         </div>
       </template>
@@ -187,6 +192,14 @@ td {
   fill: #fbbf24;
 }
 
+.recruited {
+  color: green;
+}
+.new {
+  background: blue;
+  color: white;
+  padding: 2px 4px;
+}
 input[type='checkbox'] {
   width: 16px;
   height: 16px;

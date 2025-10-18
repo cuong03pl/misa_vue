@@ -1,7 +1,7 @@
 <template>
   <div class="content p-6">
     <!-- head -->
-    <div class="flex justify-between create-button">
+    <div class="flex justify-between create-button items-center">
       <div class="">
         <span class="text-2xl font-bold">{{ t('candidate.title') }}</span>
       </div>

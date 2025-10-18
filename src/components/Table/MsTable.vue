@@ -1,10 +1,21 @@
 <template>
   <table>
-    <TableHeader hasCheckbox :data="headers" />
+    <TableHeader
+      :checked="isAllSelected"
+      @toggleSelectAll="toggleSelectAll"
+      hasCheckbox
+      :data="headers"
+    />
     <tbody>
       <tr @dblclick="emit('dblclick', row)" v-for="(row, rowIndex) in rows" :key="rowIndex">
         <td v-if="hasCheckbox">
-          <input type="checkbox" class="row-checkbox" />
+          <!-- Vmodel tự động checked nếu trong selectedRows có value -->
+          <input
+            :value="row.CandidateID"
+            v-model="selectedRows"
+            type="checkbox"
+            class="row-checkbox"
+          />
         </td>
         <td class="line-clamp-1" v-for="header in headers" :key="header.field">
           <slot
@@ -25,8 +36,9 @@
 <script setup>
 import { formatter } from '@/utils/formatter'
 import TableHeader from './TableHeader.vue'
+import { ref, watch } from 'vue'
 
-defineProps({
+const props = defineProps({
   headers: {
     type: Array,
     required: true,
@@ -41,6 +53,20 @@ defineProps({
   },
 })
 const emit = defineEmits(['dblclick'])
+const selectedRows = ref([])
+const isAllSelected = ref(false)
+
+watch(selectedRows, (newVal) => {
+  isAllSelected.value = props.rows.length > 0 && selectedRows.value.length === props.rows.length
+})
+
+const toggleSelectAll = () => {
+  if (isAllSelected.value) {
+    selectedRows.value = []
+  } else {
+    selectedRows.value = props.rows.map((r) => r.CandidateID)
+  }
+}
 </script>
 
 <style scoped>

@@ -3,3 +3,15 @@
   width: 20px;
   height: 18px;
 }
+.search-icon {
+  background: url('../ICON.svg') no-repeat -141px -472px;
+  background-size: 192px 704px;
+  width: 7px;
+  height: 7px;
+}
+.global-icon {
+  background: url('../ICON.svg') no-repeat 0 -304px;
+  background-size: 192px 704px;
+  width: 11px;
+  height: 11px;
+}

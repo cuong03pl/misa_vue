@@ -1,5 +1,6 @@
 export const Candidate_data = [
   {
+    CandidateID: 1,
     CandidateName: 'Nguyễn Văn A',
     Mobile: '0987123456',
     Email: 'nguyenvana@gmail.com',
@@ -8,8 +9,10 @@ export const Candidate_data = [
     RecruitmentRoundName: 'Phỏng vấn HR',
     Rating: '5',
     applyDate: '01/10/2024',
+    isRecruited: true,
   },
   {
+    CandidateID: 2,
     CandidateName: 'Trần Thị Bích',
     Mobile: '0978456123',
     Email: 'bich.tran@example.com',
@@ -18,8 +21,10 @@ export const Candidate_data = [
     RecruitmentRoundName: 'Vòng hồ sơ',
     Rating: '5',
     applyDate: '01/10/2024',
+    hasMessage: true,
   },
   {
+    CandidateID: 3,
     CandidateName: 'Lê Minh Cường',
     Mobile: '0912345678',
     Email: 'cuong.le@example.com',
@@ -28,8 +33,10 @@ export const Candidate_data = [
     RecruitmentRoundName: 'Phỏng vấn kỹ thuật',
     Rating: '5',
     applyDate: '01/10/2024',
+    isNew: true,
   },
   {
+    CandidateID: 4,
     CandidateName: 'Phạm Thùy Dung',
     Mobile: '0909234567',
     Email: 'dung.pham@example.com',
@@ -40,6 +47,7 @@ export const Candidate_data = [
     applyDate: '01/10/2024',
   },
   {
+    CandidateID: 5,
     CandidateName: 'Hoàng Đức Long',
     Mobile: '0933456789',
     Email: 'long.hoang@example.com',

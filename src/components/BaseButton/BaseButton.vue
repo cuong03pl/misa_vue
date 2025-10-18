@@ -85,6 +85,7 @@ defineProps({
   background: #f5f5f5;
   color: #333;
   border: 1px solid #d9d9d9;
+  min-width: 80px;
 }
 
 .btn-cancel-confirm:hover {

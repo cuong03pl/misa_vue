@@ -7,7 +7,6 @@ export const formatter = {
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('vi-VN')
 }
-
 const formatPhone = (phone) => {
   if (!phone) return ''
 
@@ -18,7 +17,7 @@ const formatPhone = (phone) => {
   digits = digits.slice(-10)
 
   if (digits.length === 10) {
-    return digits.replace(/(\d{4})(\d{3})(\d{3})/, '$1.$2.$3')
+    return digits.replace(/(\d{4})(\d{3})(\d{3})/, '$1 $2 $3')
   }
 
   return digits

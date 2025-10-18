@@ -4,7 +4,7 @@
       <!-- head -->
       <div class="modal-head px-4 py-4 flex justify-between items-center">
         <slot name="head">
-          <span class="text-3xl font-bold">{{
+          <span class="text-2xl font-bold">{{
             mode !== 'edit'
               ? t('common.button.add', { msg: 'ứng viên' })
               : t('common.button.edit', { msg: 'ứng viên' })
@@ -200,10 +200,10 @@
 
       <div class="footer flex justify-end px-4 py-4 gap-12">
         <slot name="footer">
-          <BaseButton btnCancel @click="emit('update:isOpen', false)">{{
+          <BaseButton btnCancel medium @click="emit('update:isOpen', false)">{{
             t('common.button.cancel')
           }}</BaseButton>
-          <BaseButton type="submit" btnPrimary>{{ t('common.button.save') }}</BaseButton>
+          <BaseButton type="submit" btnPrimary medium>{{ t('common.button.save') }}</BaseButton>
         </slot>
       </div>
     </form>

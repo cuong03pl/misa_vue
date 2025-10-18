@@ -1,8 +1,13 @@
 <template>
-  <thead>
+  <thead class="table-head">
     <tr>
       <th v-show="hasCheckbox" style="width: 48px">
-        <input type="checkbox" id="selectAll" />
+        <input
+          :checked="checked"
+          @change="emit('toggleSelectAll')"
+          type="checkbox"
+          id="selectAll"
+        />
       </th>
       <th v-for="(item, index) in data" :key="index">{{ item.title }}</th>
     </tr>
@@ -13,7 +18,9 @@
 defineProps({
   hasCheckbox: Boolean,
   data: Array,
+  checked: Boolean,
 })
+const emit = defineEmits(['toggleSelectAll'])
 </script>
 
 <style scoped>
@@ -37,5 +44,8 @@ input[type='checkbox'] {
   width: 16px;
   height: 16px;
   cursor: pointer;
+}
+.table-head {
+  background: #f1f0f0;
 }
 </style>

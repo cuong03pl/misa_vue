@@ -6,7 +6,7 @@
       <div class="menu icon menu-icon"></div>
       <!-- logo -->
       <div class="logo flex items-center gap-24">
-        <img class="image" src="" alt="" />
+        <img class="image" src="@/assets/img/logo.png" alt="" />
         <span class="text text-primary">{{ t('header.title') }}</span>
       </div>
       <Search :placeholder="t('common.searchPlaceholder')" />

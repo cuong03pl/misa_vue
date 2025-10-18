@@ -1,6 +1,6 @@
 <template>
   <div :class="['side-bar flex flex-col justify-between', !isShow && 'collapsed']">
-    <ul class="flex flex-col gap-12">
+    <ul class="flex flex-col gap-6">
       <SidebarItem v-for="item in sidebar_data" :item="item" :key="item.id" />
     </ul>
     <BaseButton large btnPrimary @click="handleToggle">
