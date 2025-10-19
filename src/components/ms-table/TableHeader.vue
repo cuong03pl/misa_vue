@@ -15,12 +15,17 @@
 </template>
 
 <script setup>
+//#region Props
 defineProps({
   hasCheckbox: Boolean,
   data: Array,
   checked: Boolean,
 })
+//#endregion Props
+
+//#region Emits
 const emit = defineEmits(['toggleSelectAll'])
+//#endregion Emits
 </script>
 
 <style scoped>

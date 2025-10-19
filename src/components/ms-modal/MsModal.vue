@@ -1,8 +1,10 @@
 <script setup>
+//#region Props
 defineProps({
   to: String,
   isOpen: Boolean,
 })
+//#endregion Props
 </script>
 <template>
   <Teleport :to="to">

@@ -6,11 +6,16 @@
 </template>
 
 <script setup>
+//#region Props
 defineProps({
   label: String,
   modelValue: [String, Number],
 })
+//#endregion Props
+
+//#region Emits
 const emit = defineEmits(['update:modelValue'])
+//#endregion Emits
 </script>
 
 <style></style>

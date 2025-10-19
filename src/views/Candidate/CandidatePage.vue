@@ -56,19 +56,26 @@ import MsSearch from '@/components/ms-search/MsSearch.vue'
 import CandidateTable from './components/CandidateTable.vue'
 import CandidateModal from './components/CandidateModal.vue'
 const { t } = useI18n()
+
+//#region State
 const isOpen = ref(false)
 const candidates = ref([...Candidate_data])
 const q = ref('')
+const debouncedFetch = _.debounce(fetchData, 500)
+//#endregion State
+
+//#region Watchers
+watch(q, (newVal) => {
+  debouncedFetch(newVal)
+})
+//#endregion Watchers
+
+//#region Methods
 const fetchData = (newVal) => {
   candidates.value = Candidate_data.filter((item) =>
     item.CandidateName.toLowerCase().includes(newVal.toLowerCase()),
   )
 }
-
-const debouncedFetch = _.debounce(fetchData, 500)
-watch(q, (newVal) => {
-  debouncedFetch(newVal)
-})
 
 const hanleToggleModal = () => {
   isOpen.value = !isOpen.value
@@ -76,6 +83,7 @@ const hanleToggleModal = () => {
 const handleSave = (data) => {
   console.log(data)
 }
+//#endregion Methods
 </script>
 
 <style scoped>

@@ -31,10 +31,16 @@ import { useI18n } from 'vue-i18n'
 import MsModal from './MsModal.vue'
 
 const { t } = useI18n()
+
+//#region Props
 defineProps({
   isOpenConfirmModal: Boolean,
 })
+//#endregion Props
+
+//#region Emits
 const emit = defineEmits(['update:isOpenConfirmModal'])
+//#endregion Emits
 </script>
 
 <style scoped>

@@ -13,6 +13,7 @@
 </template>
 
 <script setup>
+//#region Props
 defineProps({
   label: String,
   type: String,
@@ -22,7 +23,11 @@ defineProps({
   modelValue: String,
   error_message: String,
 })
+//#endregion Props
+
+//#region Emits
 const emit = defineEmits(['update:modelValue'])
+//#endregion Emits
 </script>
 
 <style>

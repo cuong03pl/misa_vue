@@ -218,12 +218,15 @@ import { useI18n } from 'vue-i18n'
 import { Gender } from '@/constants/enum'
 import MsModal from '@/components/ms-modal/MsModal.vue'
 const { t } = useI18n()
+//#region Props
 const props = defineProps({
   isOpen: Boolean,
   candidate: Object,
   mode: String,
 })
+//#endregion Props
 
+//#region Watchers
 watch(
   () => props.candidate,
   (newVal) => {
@@ -235,9 +238,13 @@ watch(
     gender.value = newVal.Gender || ''
   },
 )
+//#endregion Watchers
 
+//#region Emits
 const emit = defineEmits(['update:isOpen', 'save'])
+//#endregion Emits
 
+// Form validate setup
 const { errors, handleSubmit, defineField } = useForm({
   validationSchema: candidateSchema(t),
 })
@@ -249,9 +256,16 @@ const [position, positionAttrs] = defineField('position')
 const [birthday, birthdayAttrs] = defineField('birthday')
 const [gender, genderAttrs] = defineField('gender')
 
+//region Methods
+/**
+ * Hàm lấy dữ liệu form
+ * @param values - Dữ liệu form
+ * createdby: hkc
+ */
 const onSubmit = handleSubmit((values) => {
   emit('save', values)
 })
+//endregion Methods
 </script>
 
 <style>

@@ -14,6 +14,7 @@
 </template>
 
 <script setup>
+//#region Props
 defineProps({
   placeholder: {
     type: String,
@@ -24,7 +25,11 @@ defineProps({
     default: '',
   },
 })
+//#endregion Props
+
+//#region Emits
 const emit = defineEmits(['update:modelValue'])
+//#endregion Emits
 </script>
 
 <style>

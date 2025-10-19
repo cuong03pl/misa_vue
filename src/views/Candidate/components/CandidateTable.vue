@@ -45,23 +45,42 @@ import { useI18n } from 'vue-i18n'
 import MsTable from '@/components/ms-table/MsTable.vue'
 import TableFooter from '@/components/ms-table/TableFooter.vue'
 
+//#region Props
 defineProps({
   candidates: {
     type: Array,
     default: () => [],
   },
 })
+//#endregion Props
 
 const { t } = useI18n()
+
+//#region State
 const isOpen = ref(false)
 const selectedCandidate = ref({})
+//#endregion State
+
+//#region Methods
+/**
+ * Hàm xử lý bật tắt modal
+ * @param item - dữ liệu ứng viên được chọn
+ * createdby: hkc
+ */
 const handleToggleModal = (item) => {
   selectedCandidate.value = { ...item }
   isOpen.value = !isOpen.value
 }
+
+/**
+ * Hàm xử lý bật tắt modal
+ * @param data - Dữ liệu ứng viên đã được chỉnh sửa
+ * createdby: hkc
+ */
 const handleSave = (data) => {
   console.log(data)
 }
+//#endregion Methods
 </script>
 
 <style scoped>

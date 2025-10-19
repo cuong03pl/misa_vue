@@ -1,14 +1,20 @@
 import { ref, watch } from 'vue'
 import debounce from 'lodash/debounce'
 
-export function useDebounce(value) {
+/**
+ * Hàm delay việc thay đổi giá trị
+ * @param value -  Giá trị cần debounce
+ * @param delay Thời gian delay tính bằng ms
+ * @returns {debouncedValue} - Giá trị đã được debounce
+ * createdby: hkc
+ */
+export function useDebounce(value, delay = 300) {
   const debouncedValue = ref(value)
-  console.log(value)
 
   const setDebouncedValue = debounce((value) => {
     debouncedValue.value = value
-  }, 300)
-  watch(debouncedValue, (newVal) => setDebouncedValue(newVal))
+  }, delay)
+  watch(value, (newVal) => setDebouncedValue(newVal))
   return {
     debouncedValue,
   }

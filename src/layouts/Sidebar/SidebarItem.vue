@@ -6,9 +6,11 @@
 </template>
 
 <script setup>
+////#region Props
 defineProps({
   item: Object,
 })
+//#endregion Props
 </script>
 
 <style></style>

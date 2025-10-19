@@ -18,11 +18,20 @@ import { sidebar_data } from '@/constants/sidebar_data'
 import { useI18n } from 'vue-i18n'
 import SidebarItem from './SidebarItem.vue'
 const { t } = useI18n()
-const isShow = ref(true)
 
+//#region State
+const isShow = ref(true)
+//#endregion State
+
+//#region Methods
+/**
+ * Hàm xử lý thu gọn sidebar
+ * createdby: hkc
+ */
 const handleToggle = () => {
   isShow.value = !isShow.value
 }
+//#endregion Methods
 </script>
 
 <style>

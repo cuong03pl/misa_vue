@@ -20,8 +20,7 @@
 </template>
 
 <script setup>
-const emit = defineEmits(['click'])
-
+//#region Props
 defineProps({
   isOnlyIcon: Boolean,
   btnPrimary: Boolean,
@@ -32,6 +31,11 @@ defineProps({
   medium: Boolean,
   type: String,
 })
+//#endregion Props
+
+//#region Emits
+const emit = defineEmits(['click'])
+//#endregion Emits
 </script>
 
 <style>

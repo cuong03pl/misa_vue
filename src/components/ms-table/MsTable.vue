@@ -38,6 +38,7 @@ import { formatter } from '@/utils/formatter'
 import TableHeader from './TableHeader.vue'
 import { ref, watch } from 'vue'
 
+//#region Props
 const props = defineProps({
   headers: {
     type: Array,
@@ -52,16 +53,30 @@ const props = defineProps({
     default: false,
   },
 })
+//#endregion Props
+
+//#region Emits
 const emit = defineEmits(['dblclick'])
+//#endregion Emits
+
+//#region State
 const selectedRows = ref([])
 const isAllSelected = ref(false)
+//#endregion State
 
+//#region Watchers
 watch(selectedRows, (newVal) => {
   console.log(selectedRows)
 
   isAllSelected.value = props.rows.length > 0 && selectedRows.value.length === props.rows.length
 })
+//#endregion Watchers
 
+//#region Methods
+/**
+ * Hàm xử lý chọn tất cả checkbox
+ * createdby: hkc
+ */
 const toggleSelectAll = () => {
   if (isAllSelected.value) {
     selectedRows.value = []
@@ -69,6 +84,7 @@ const toggleSelectAll = () => {
     selectedRows.value = props.rows.map((r) => r.CandidateID)
   }
 }
+//#endregion Methods
 </script>
 
 <style scoped>
