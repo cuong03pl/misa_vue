@@ -9,7 +9,7 @@
         <img class="image" src="@/assets/img/logo.png" alt="" />
         <span class="text text-primary">{{ t('header.title') }}</span>
       </div>
-      <Search :placeholder="t('common.searchPlaceholder')" />
+      <ms-search :placeholder="t('common.searchPlaceholder')" />
     </div>
     <!-- Header right -->
     <div class="flex gap-12 header-right items-center">
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import Search from '@/components/Search/Search.vue'
+import MsSearch from '@/components/ms-search/MsSearch.vue'
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 </script>

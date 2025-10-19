@@ -1,5 +1,5 @@
 <template>
-  <BaseModal :isOpen="isOpenConfirmModal" to="body">
+  <ms-modal :isOpen="isOpenConfirmModal" to="body">
     <div class="modal-confirm">
       <div class="overlay">
         <div class="content rounded-md">
@@ -14,22 +14,22 @@
           </div>
           <div class="modal-confirm-footer flex justify-end gap-12 px-5 py-4">
             <slot name="footer">
-              <BaseButton btnCancel @click="emit('update:isOpenConfirmModal', false)">{{
+              <ms-button btnCancel @click="emit('update:isOpenConfirmModal', false)">{{
                 t('common.button.cancel')
-              }}</BaseButton>
-              <BaseButton btnDelete>{{ t('common.button.delete') }}</BaseButton>
+              }}</ms-button>
+              <ms-button btnDelete>{{ t('common.button.delete') }}</ms-button>
             </slot>
           </div>
         </div>
       </div>
     </div>
-  </BaseModal>
+  </ms-modal>
 </template>
 
 <script setup>
 import { useI18n } from 'vue-i18n'
-import BaseButton from '../BaseButton/BaseButton.vue'
-import BaseModal from './BaseModal.vue'
+import MsModal from './MsModal.vue'
+
 const { t } = useI18n()
 defineProps({
   isOpenConfirmModal: Boolean,

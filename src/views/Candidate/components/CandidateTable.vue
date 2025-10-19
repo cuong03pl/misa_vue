@@ -41,9 +41,9 @@ import { Candidate_header } from '@/constants/header_data'
 import { getAvatar } from '@/utils/getAvatar'
 import { ref } from 'vue'
 import CandidateModal from '@/views/Candidate/components/CandidateModal.vue'
-import TableFooter from '@/components/Table/TableFooter.vue'
-import MsTable from '@/components/Table/MsTable.vue'
 import { useI18n } from 'vue-i18n'
+import MsTable from '@/components/ms-table/MsTable.vue'
+import TableFooter from '@/components/ms-table/TableFooter.vue'
 
 defineProps({
   candidates: {

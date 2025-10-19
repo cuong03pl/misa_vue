@@ -1,5 +1,5 @@
 <template>
-  <BaseModal to="body" :isOpen="isOpen">
+  <ms-modal to="body" :isOpen="isOpen">
     <form @submit="onSubmit" class="modal-content rounded-md">
       <!-- head -->
       <div class="modal-head px-4 py-4 flex justify-between items-center">
@@ -28,7 +28,7 @@
           <div class="flex-1">
             <!-- name -->
             <div class="form-input flex flex-col">
-              <TextInput
+              <ms-input
                 :isRequired="true"
                 label="Họ và tên"
                 placeholder="Nhập họ và tên"
@@ -42,35 +42,30 @@
             <!-- ngày sinh, giới tính -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <TextInput
-                  v-model="birthday"
-                  v-bind="birthdayAttrs"
-                  label="Ngày sinh"
-                  type="date"
-                />
+                <ms-input v-model="birthday" v-bind="birthdayAttrs" label="Ngày sinh" type="date" />
               </div>
               <div class="select-list flex flex-1 flex-col">
-                <SelectList v-model="gender" label="Chọn giới tính">
+                <ms-select v-model="gender" label="Chọn giới tính">
                   <option value="default">Chọn giới tính</option>
                   <option :value="Gender.MALE">Nam</option>
                   <option :value="Gender.FEMALE">Nữ</option>
-                </SelectList>
+                </ms-select>
               </div>
             </div>
             <!-- khu vực  -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="select-list flex flex-1 flex-col">
-                <SelectList label="Khu vực">
+                <ms-select label="Khu vực">
                   <option value="default">Chọn giới tính</option>
                   <option value="volvo">Nam</option>
                   <option value="saab">Nữ</option>
-                </SelectList>
+                </ms-select>
               </div>
             </div>
             <!-- SDT, Email -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <TextInput
+                <ms-input
                   :isRequired="true"
                   label="Số điện thoại"
                   placeholder="Nhập số điện thoại"
@@ -82,7 +77,7 @@
                 />
               </div>
               <div class="form-input flex flex-1 flex-col">
-                <TextInput
+                <ms-input
                   name="email"
                   :isRequired="true"
                   label="Email"
@@ -97,7 +92,7 @@
             <!-- Địa chỉ -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <TextInput label="Địa chỉ" placeholder="Nhập địa chỉ" type="text" />
+                <ms-input label="Địa chỉ" placeholder="Nhập địa chỉ" type="text" />
               </div>
             </div>
             <!-- Học vấn -->
@@ -106,17 +101,17 @@
               <ul class="flex flex-col gap-12">
                 <li>
                   <div class="flex items-center justify-between gap-12">
-                    <TextInput label="Trình độ đào tạo" placeholder="Nhập địa chỉ" type="text" />
+                    <ms-input label="Trình độ đào tạo" placeholder="Nhập địa chỉ" type="text" />
                   </div>
                 </li>
                 <li>
                   <div class="flex items-center justify-between gap-12">
-                    <TextInput label="Trình độ đào tạo" placeholder="Nhập địa chỉ" type="text" />
+                    <ms-input label="Trình độ đào tạo" placeholder="Nhập địa chỉ" type="text" />
                   </div>
                 </li>
                 <li>
                   <div class="flex items-center justify-between gap-12">
-                    <TextInput label="Trình độ đào tạo" placeholder="Nhập địa chỉ" type="text" />
+                    <ms-input label="Trình độ đào tạo" placeholder="Nhập địa chỉ" type="text" />
                   </div>
                 </li>
               </ul>
@@ -125,37 +120,37 @@
             <!-- apply date -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <TextInput label="Ngày ứng tuyển" type="date" />
+                <ms-input label="Ngày ứng tuyển" type="date" />
               </div>
               <div class="select-list flex flex-1 flex-col">
-                <SelectList label="Nguồn ứng viên">
+                <ms-select label="Nguồn ứng viên">
                   <option value="default">Chọn giới tính</option>
                   <option value="volvo">Nam</option>
                   <option value="saab">Nữ</option>
-                </SelectList>
+                </ms-select>
               </div>
             </div>
             <!-- CTV -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="select-list flex flex-1 flex-col">
-                <SelectList label="Nhân sự khai thác">
+                <ms-select label="Nhân sự khai thác">
                   <option value="default">Chọn giới tính</option>
                   <option value="volvo">Nam</option>
                   <option value="saab">Nữ</option>
-                </SelectList>
+                </ms-select>
               </div>
               <div class="select-list flex flex-1 flex-col">
-                <SelectList label="Cộng tác viên">
+                <ms-select label="Cộng tác viên">
                   <option value="default">Chọn giới tính</option>
                   <option value="volvo">Nam</option>
                   <option value="saab">Nữ</option>
-                </SelectList>
+                </ms-select>
               </div>
             </div>
             <!-- Nơi làm việc gần đây -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <TextInput
+                <ms-input
                   label="Nơi làm việc gần đây"
                   placeholder="Nhập nơi làm việc gần đây"
                   type="text"
@@ -168,10 +163,10 @@
                 <span class="text-primary">Thời gian </span>
                 <div class="flex justify-between gap-12">
                   <div class="flex-1">
-                    <TextInput label="" type="date" />
+                    <ms-input label="" type="date" />
                   </div>
                   <div class="flex-1">
-                    <TextInput label="" type="date" />
+                    <ms-input label="" type="date" />
                   </div>
                 </div>
               </div>
@@ -180,7 +175,7 @@
             <!-- Vị trí công việc -->
             <div class="flex justify-between gap-12 mt-5">
               <div class="form-input flex flex-1 flex-col">
-                <TextInput
+                <ms-input
                   :isRequired="true"
                   label="Vị trí công việc"
                   placeholder="Nhập vị trí công việc"
@@ -205,26 +200,23 @@
 
       <div class="footer flex justify-end px-4 py-4 gap-12">
         <slot name="footer">
-          <BaseButton btnCancel medium @click="emit('update:isOpen', false)">{{
+          <ms-button btnCancel medium @click="emit('update:isOpen', false)">{{
             t('common.button.cancel')
-          }}</BaseButton>
-          <BaseButton type="submit" btnPrimary medium>{{ t('common.button.save') }}</BaseButton>
+          }}</ms-button>
+          <ms-button type="submit" btnPrimary medium>{{ t('common.button.save') }}</ms-button>
         </slot>
       </div>
     </form>
-  </BaseModal>
+  </ms-modal>
 </template>
 
 <script setup>
 import { candidateSchema } from '@/schemas/candidate.schema'
-import SelectList from '../../../components/FormField/SelectList.vue'
-import TextInput from '../../../components/FormField/TextInput.vue'
-import BaseModal from '../../../components/Modal/BaseModal.vue'
 import { useForm } from 'vee-validate'
 import { watch } from 'vue'
-import BaseButton from '../../../components/BaseButton/BaseButton.vue'
 import { useI18n } from 'vue-i18n'
 import { Gender } from '@/constants/enum'
+import MsModal from '@/components/ms-modal/MsModal.vue'
 const { t } = useI18n()
 const props = defineProps({
   isOpen: Boolean,

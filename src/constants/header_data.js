@@ -1,9 +1,9 @@
 export const Candidate_header = [
-  {
-    field: 'CandidateID',
-    title: '',
-    type: 'text',
-  },
+  // {
+  //   field: 'CandidateID',
+  //   title: '',
+  //   type: 'text',
+  // },
   {
     field: 'CandidateName',
     title: 'Họ và tên',

@@ -57,6 +57,8 @@ const selectedRows = ref([])
 const isAllSelected = ref(false)
 
 watch(selectedRows, (newVal) => {
+  console.log(selectedRows)
+
   isAllSelected.value = props.rows.length > 0 && selectedRows.value.length === props.rows.length
 })
 

@@ -5,7 +5,7 @@
       <div class="">
         <span class="text-2xl font-bold">{{ t('candidate.title') }}</span>
       </div>
-      <BaseButton btnTwoIcons btnPrimary large @click="hanleToggleModal">
+      <ms-button btnTwoIcons btnPrimary large @click="hanleToggleModal">
         <template #left-icon>
           <span><i class="fa-solid fa-plus text-white"></i></span>
         </template>
@@ -15,47 +15,46 @@
             <i class="fa-solid fa-chevron-down"></i>
           </div>
         </template>
-      </BaseButton>
+      </ms-button>
     </div>
     <!-- body -->
     <div class="data-section py-5 mt-5 rounded-md">
       <!-- filter -->
       <div class="filter flex justify-end px-5">
         <div class="flex gap-12">
-          <Search v-model="q" :placeholder="t('common.searchPlaceholder')" />
-          <BaseButton isOnlyIcon>
+          <ms-search v-model="q" :placeholder="t('common.searchPlaceholder')" />
+          <ms-button isOnlyIcon>
             <i class="fa-solid fa-magnifying-glass"></i>
-          </BaseButton>
-          <BaseButton isOnlyIcon>
+          </ms-button>
+          <ms-button isOnlyIcon>
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
-          </BaseButton>
-          <BaseButton isOnlyIcon>
+          </ms-button>
+          <ms-button isOnlyIcon>
             <i class="fa-regular fa-chart-bar"></i>
-          </BaseButton>
-          <BaseButton isOnlyIcon>
+          </ms-button>
+          <ms-button isOnlyIcon>
             <i class="fa-solid fa-gear"></i>
-          </BaseButton>
+          </ms-button>
         </div>
       </div>
 
       <!-- table -->
       <div class="table mt-5">
-        <MSCandidateTable :candidates="candidates" />
+        <candidate-table :candidates="candidates" />
       </div>
     </div>
   </div>
-  <CandidateModal v-model:isOpen="isOpen" @save="handleSave" />
+  <candidate-modal v-model:isOpen="isOpen" @save="handleSave" />
 </template>
 
 <script setup>
-import BaseButton from '@/components/BaseButton/BaseButton.vue'
-import CandidateModal from '@/views/Candidate/components/CandidateModal.vue'
-import Search from '@/components/Search/Search.vue'
 import { ref, watch } from 'vue'
-import MSCandidateTable from './components/CandidateTable.vue'
 import { useI18n } from 'vue-i18n'
 import { Candidate_data } from '@/constants/data_example'
 import _ from 'lodash'
+import MsSearch from '@/components/ms-search/MsSearch.vue'
+import CandidateTable from './components/CandidateTable.vue'
+import CandidateModal from './components/CandidateModal.vue'
 const { t } = useI18n()
 const isOpen = ref(false)
 const candidates = ref([...Candidate_data])

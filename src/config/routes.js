@@ -1,6 +1,6 @@
 import TheLayout from '@/layouts/TheLayout.vue'
-import CandidatePage from '@/views/Candidate/CandidatePage.vue'
-import NotFoundPage from '@/views/NotFound/NotFoundPage.vue'
+import NotFoundPage from '@/page/NotFoundPage.vue'
+import CandidatePage from '@/views/candidate/CandidatePage.vue'
 
 export const routes = [
   {

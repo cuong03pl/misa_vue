@@ -14,18 +14,16 @@
         <span>1 - 25 bản ghi</span>
       </div>
       <div class="pagination">
-        <BaseButton disabled>
+        <ms-button disabled>
           <i class="fa-solid fa-chevron-left"></i>
-        </BaseButton>
-        <BaseButton><i class="fa-solid fa-chevron-right"></i></BaseButton>
+        </ms-button>
+        <ms-button><i class="fa-solid fa-chevron-right"></i></ms-button>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
-import BaseButton from '../BaseButton/BaseButton.vue'
-</script>
+<script setup></script>
 
 <style>
 /* footer table*/

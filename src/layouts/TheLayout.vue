@@ -1,15 +1,15 @@
 <script setup>
-import TheHeader from './Header/TheHeader.vue'
-import TheSidebar from './Sidebar/TheSidebar.vue'
+import TheHeader from './header/TheHeader.vue'
+import TheSidebar from './sidebar/TheSidebar.vue'
 </script>
 <template>
   <div class="container">
     <!-- Header -->
-    <TheHeader />
+    <the-header />
 
     <div class="flex-1 flex justify-between">
       <!-- side bar -->
-      <TheSidebar />
+      <the-sidebar />
       <!-- content -->
       <router-view />
     </div>
