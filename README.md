@@ -20,3 +20,6 @@ Phân vùng và comment hàm
   --
   select all
   focus ô đầu
+
+  ////now
+  combox vừa tìm kiếm vừa select

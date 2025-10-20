@@ -9,6 +9,7 @@
       btnDelete && 'btn-delete',
       btnCancel && 'btn-cancel',
       btnTwoIcons && 'btn-two-icons',
+      btnToggle && 'btn-toggle',
       large && 'btn-large',
       medium && 'btn-medium',
     ]"
@@ -27,6 +28,7 @@ defineProps({
   btnDelete: Boolean,
   btnCancel: Boolean,
   btnTwoIcons: Boolean,
+  btnToggle: Boolean,
   large: Boolean,
   medium: Boolean,
   type: String,
@@ -71,12 +73,14 @@ const emit = defineEmits(['click'])
 .btn-two-icons {
   background: var(--btn-primary);
   color: #fff;
+  min-width: 80px;
 }
 
 .btn-delete,
 .btn-confirm-delete {
   background: #d32f2f;
   color: #fff;
+  min-width: 80px;
 }
 
 .btn-delete:hover,
@@ -95,7 +99,10 @@ const emit = defineEmits(['click'])
 .btn-cancel-confirm:hover {
   background: #e8e8e8;
 }
-
+.btn-toggle {
+  background: var(--btn-primary);
+  color: #fff;
+}
 /* --- Special styles --- */
 .btn-only-icon {
   border: 1px solid #cccccc87;

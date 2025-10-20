@@ -6,7 +6,7 @@ export const candidateSchema = (t) => {
     phone: yup.string().required(t('candidate.errors.phone_required')),
     email: yup
       .string()
-      .email(t('candidateSchema.errors.email_invalid'))
+      .email(t('candidate.errors.email_invalid'))
       .required(t('candidate.errors.email_required')),
     position: yup.string().required(t('candidate.errors.position_required')),
   })

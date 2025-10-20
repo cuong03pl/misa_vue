@@ -1,6 +1,8 @@
 <template>
   <div class="footer px-5 pt-5">
-    <div class="footer-left">Tổng: <span>5381</span> bản ghi</div>
+    <div class="footer-left">
+      Tổng: <span>{{ count }}</span> bản ghi
+    </div>
     <div class="footer-right">
       <div class="page-size">
         <span>Số bản ghi/trang</span>
@@ -23,7 +25,14 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+defineProps({
+  count: {
+    type: Number,
+    default: 0,
+  },
+})
+</script>
 
 <style>
 /* footer table*/

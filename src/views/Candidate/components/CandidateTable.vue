@@ -1,40 +1,39 @@
 <template>
-  <div class="table-container">
-    <ms-table
-      @dblclick="handleToggleModal"
-      :hasCheckbox="true"
-      :headers="Candidate_header"
-      :rows="candidates"
-      @getSelectRows="handleGetSelectedRows"
-    >
-      <template #cell-CandidateName="{ row, value }">
-        <div class="avatar-cell">
-          <div class="avatar flex items-center justify-center text-secondary yellow">
-            {{ getAvatar(value) }}
-          </div>
-          <div :class="['user-info', row.isRecruited ? 'flex-col gap-2' : '']">
-            <div class="user-name">{{ value }}</div>
-            <div v-if="row.isRecruited" class="recruited flex items-center gap-6">
-              <i class="fa-solid fa-check"></i> <span>Nhân viên</span>
-            </div>
-            <div v-if="row.hasMessage" class=""><i class="fa-regular fa-envelope"></i></div>
-            <!-- <div v-if="row.isNew" class="new">Mới</div> -->
-          </div>
+  <!-- <div class="table-container"> -->
+  <ms-table
+    @dblclick="handleToggleModal"
+    :hasCheckbox="true"
+    :headers="Candidate_header"
+    :rows="candidates"
+    @getSelectRows="handleGetSelectedRows"
+  >
+    <template #cell-CandidateName="{ row, value }">
+      <div class="avatar-cell">
+        <div class="avatar flex items-center justify-center text-secondary yellow">
+          {{ getAvatar(value) }}
         </div>
-      </template>
-      <template #cell-RecruitmentRoundName="{ value }">
-        <span class="status">{{ value }}</span>
-      </template>
-    </ms-table>
-    <CandidateModal
-      mode="edit"
-      @save="handleSave"
-      :candidate="selectedCandidate"
-      v-model:isOpen="isOpen"
-    />
-  </div>
+        <div :class="['user-info', row.isRecruited ? 'flex-col gap-2' : '']">
+          <div class="user-name">{{ value }}</div>
+          <div v-if="row.isRecruited" class="recruited flex items-center gap-6">
+            <i class="fa-solid fa-check"></i> <span>Nhân viên</span>
+          </div>
+          <div v-if="row.hasMessage" class=""><i class="fa-regular fa-envelope"></i></div>
+          <!-- <div v-if="row.isNew" class="new">Mới</div> -->
+        </div>
+      </div>
+    </template>
+    <template #cell-RecruitmentRoundName="{ value }">
+      <span class="status">{{ value }}</span>
+    </template>
+  </ms-table>
+  <CandidateModal
+    mode="edit"
+    @save="handleSave"
+    :candidate="selectedCandidate"
+    v-model:isOpen="isOpen"
+  />
+  <!-- </div> -->
   <!-- table footer -->
-  <TableFooter />
 </template>
 
 <script setup>
@@ -43,7 +42,6 @@ import { getAvatar } from '@/utils/getAvatar'
 import { ref } from 'vue'
 import CandidateModal from '@/views/Candidate/components/CandidateModal.vue'
 import MsTable from '@/components/ms-table/MsTable.vue'
-import TableFooter from '@/components/ms-table/TableFooter.vue'
 
 //#region Props
 defineProps({
@@ -95,41 +93,10 @@ const handleGetSelectedRows = (data) => {
   overflow-y: auto;
   overflow-x: auto;
   background: white;
-  max-height: calc(100vh - 310px);
+  min-height: calc(100vh - 310px);
   height: auto;
 }
 
-.empty-component {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 300px;
-  user-select: none;
-}
-thead {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  position: sticky;
-  top: -5px;
-  z-index: 10;
-}
-
-th {
-  padding: 12px 16px;
-  text-align: left;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-color);
-  white-space: nowrap;
-}
-
-td {
-  padding: 12px 16px;
-  font-size: 14px;
-  color: var(--text-color);
-  border-bottom: 1px solid #d5d6d9;
-}
 /* Avatar */
 .avatar-cell {
   display: flex;

@@ -50,13 +50,13 @@
       </div>
 
       <!-- table -->
-      <div class="table mt-5">
+      <div class="table mt-5 flex flex-col">
         <candidate-table :candidates="candidates" @getSelectRows="handleGetSelectedRows" />
       </div>
     </div>
   </div>
   <candidate-modal v-model:isOpen="isOpen" @save="handleSave" />
-  <ms-confirm-modal v-model:isOpenConfirmModal="isOpenConfirm">
+  <ms-confirm-modal @delete="handleDelete" v-model:isOpenConfirmModal="isOpenConfirm">
     <template #content>
       <p class="text-center mt-2">
         Bạn có chắc chắn muốn xóa {{ selectedRows.length }} ứng viên này?
@@ -74,6 +74,7 @@ import MsSearch from '@/components/ms-search/MsSearch.vue'
 import CandidateTable from './components/CandidateTable.vue'
 import CandidateModal from './components/CandidateModal.vue'
 import MsConfirmModal from '@/components/ms-modal/MsConfirmModal.vue'
+import { useToast } from 'vue-toastification'
 
 const { t } = useI18n()
 
@@ -94,16 +95,30 @@ const handleSave = (data) => {
   console.log(data)
 }
 const handleGetSelectedRows = (data) => {
+  console.log(data)
+
   selectedRows.value = data
+}
+const handleDelete = () => {
+  try {
+    candidates.value = candidates.value.filter((item) => !selectedRows.value.includes(item.ID))
+    isOpenConfirm.value = false
+
+    toast.success('Xóa thành công')
+  } catch (error) {
+    toast.error('Xóa thất bại')
+  }
 }
 //#endregion Methods
 //#region State
 const isOpen = ref(false)
 const isOpenConfirm = ref(false)
 const selectedRows = ref([])
-const candidates = ref([...Candidate_data])
+const candidates = ref(_.cloneDeep(Candidate_data))
 const q = ref('')
 const debouncedFetch = _.debounce(fetchData, 500)
+const toast = useToast()
+
 //#endregion State
 
 //#region Watchers

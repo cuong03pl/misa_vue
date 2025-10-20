@@ -17,7 +17,9 @@
               <ms-button btnCancel @click="emit('update:isOpenConfirmModal', false)">{{
                 t('common.button.cancel')
               }}</ms-button>
-              <ms-button btnDelete>{{ t('common.button.delete') }}</ms-button>
+              <ms-button @click="emit('delete')" btnDelete>{{
+                t('common.button.delete')
+              }}</ms-button>
             </slot>
           </div>
         </div>
@@ -39,7 +41,7 @@ defineProps({
 //#endregion Props
 
 //#region Emits
-const emit = defineEmits(['update:isOpenConfirmModal'])
+const emit = defineEmits(['update:isOpenConfirmModal', 'delete'])
 //#endregion Emits
 </script>
 

@@ -6,5 +6,9 @@
     "email_invalid": "Email không đúng định dạng",
     "email_required": "Email không được để trống",
     "position_required": "Vị trí không được để trống"
+  },
+  "toast": {
+    "delete_success": "Xóa thành công",
+    "delete_error": "Xóa thất bại"
   }
 }

@@ -9,9 +9,15 @@ import { i18n } from './plugin/i18n'
 import MsButton from './components/ms-button/MsButton.vue'
 import MsInput from './components/ms-form-field/MsInput.vue'
 import MsSelect from './components/ms-form-field/MsSelect.vue'
+import Toast from 'vue-toastification'
+import 'vue-toastification/dist/index.css'
 
 const app = createApp(App)
+const options = {
+  position: 'bottom-right',
+}
 
+app.use(Toast, options)
 app.component('MsButton', MsButton)
 app.component('MsInput', MsInput)
 app.component('MsSelect', MsSelect)

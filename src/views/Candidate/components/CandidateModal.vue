@@ -263,7 +263,7 @@ const [gender, genderAttrs] = defineField('gender')
  * createdby: hkc
  */
 const onSubmit = handleSubmit((values) => {
-  emit('save', values)
+  emit('save', { ...values, ID: props.candidate?.ID })
 })
 //endregion Methods
 </script>
