@@ -5,17 +5,28 @@
       <div class="">
         <span class="text-2xl font-bold">{{ t('candidate.title') }}</span>
       </div>
-      <ms-button btnTwoIcons btnPrimary large @click="hanleToggleModal">
-        <template #left-icon>
-          <span><i class="fa-solid fa-plus text-white"></i></span>
-        </template>
-        <span class="text-white text-btn">{{ t('common.button.add', { msg: 'ứng viên' }) }}</span>
-        <template #right-icon>
-          <div class="dropdown flex items-center justify-between">
-            <i class="fa-solid fa-chevron-down"></i>
-          </div>
-        </template>
-      </ms-button>
+      <div class="flex items-center gap-12">
+        <ms-button
+          v-if="selectedRows.length > 0"
+          btnDelete
+          btnOnlyIcon
+          large
+          @click="hanleToggleModalConfirm"
+        >
+          <i class="fa-solid fa-trash-can"></i>
+        </ms-button>
+        <ms-button btnTwoIcons btnPrimary large @click="hanleToggleModal">
+          <template #left-icon>
+            <span><i class="fa-solid fa-plus text-white"></i></span>
+          </template>
+          <span class="text-white text-btn">{{ t('common.button.add', { msg: 'ứng viên' }) }}</span>
+          <template #right-icon>
+            <div class="dropdown flex items-center justify-between">
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+          </template>
+        </ms-button>
+      </div>
     </div>
     <!-- body -->
     <div class="data-section py-5 mt-5 rounded-md">
@@ -40,11 +51,18 @@
 
       <!-- table -->
       <div class="table mt-5">
-        <candidate-table :candidates="candidates" />
+        <candidate-table :candidates="candidates" @getSelectRows="handleGetSelectedRows" />
       </div>
     </div>
   </div>
   <candidate-modal v-model:isOpen="isOpen" @save="handleSave" />
+  <ms-confirm-modal v-model:isOpenConfirmModal="isOpenConfirm">
+    <template #content>
+      <p class="text-center mt-2">
+        Bạn có chắc chắn muốn xóa {{ selectedRows.length }} ứng viên này?
+      </p>
+    </template>
+  </ms-confirm-modal>
 </template>
 
 <script setup>
@@ -55,20 +73,9 @@ import _ from 'lodash'
 import MsSearch from '@/components/ms-search/MsSearch.vue'
 import CandidateTable from './components/CandidateTable.vue'
 import CandidateModal from './components/CandidateModal.vue'
+import MsConfirmModal from '@/components/ms-modal/MsConfirmModal.vue'
+
 const { t } = useI18n()
-
-//#region State
-const isOpen = ref(false)
-const candidates = ref([...Candidate_data])
-const q = ref('')
-const debouncedFetch = _.debounce(fetchData, 500)
-//#endregion State
-
-//#region Watchers
-watch(q, (newVal) => {
-  debouncedFetch(newVal)
-})
-//#endregion Watchers
 
 //#region Methods
 const fetchData = (newVal) => {
@@ -80,10 +87,30 @@ const fetchData = (newVal) => {
 const hanleToggleModal = () => {
   isOpen.value = !isOpen.value
 }
+const hanleToggleModalConfirm = () => {
+  isOpenConfirm.value = !isOpenConfirm.value
+}
 const handleSave = (data) => {
   console.log(data)
 }
+const handleGetSelectedRows = (data) => {
+  selectedRows.value = data
+}
 //#endregion Methods
+//#region State
+const isOpen = ref(false)
+const isOpenConfirm = ref(false)
+const selectedRows = ref([])
+const candidates = ref([...Candidate_data])
+const q = ref('')
+const debouncedFetch = _.debounce(fetchData, 500)
+//#endregion State
+
+//#region Watchers
+watch(q, (newVal) => {
+  debouncedFetch(newVal)
+})
+//#endregion Watchers
 </script>
 
 <style scoped>

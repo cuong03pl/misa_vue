@@ -1,6 +1,6 @@
 export const Candidate_data = [
   {
-    CandidateID: 1,
+    ID: 1,
     CandidateName: 'Nguyễn Văn A',
     Gender: '0',
     Birthday: '1995-05-15',
@@ -14,7 +14,7 @@ export const Candidate_data = [
     isRecruited: true,
   },
   {
-    CandidateID: 2,
+    ID: 2,
     CandidateName: 'Trần Thị Bích',
     Gender: '1',
     Birthday: '2000-09-22',
@@ -24,11 +24,11 @@ export const Candidate_data = [
     RecruitmentName: 'Digital Marketing 2025',
     RecruitmentRoundName: 'Vòng hồ sơ',
     Rating: '5',
-    applyDate: '2024-10-01',
+    applyDate: '2024-10-05',
     hasMessage: true,
   },
   {
-    CandidateID: 3,
+    ID: 3,
     CandidateName: 'Lê Minh Cường',
     Gender: '0',
     Birthday: '1998-02-10',
@@ -38,11 +38,11 @@ export const Candidate_data = [
     RecruitmentName: 'Tuyển dev VueJS 2025',
     RecruitmentRoundName: 'Phỏng vấn kỹ thuật',
     Rating: '5',
-    applyDate: '2024-10-01',
+    applyDate: '2024-10-02',
     isNew: true,
   },
   {
-    CandidateID: 4,
+    ID: 4,
     CandidateName: 'Phạm Thùy Dung',
     Gender: '1',
     Birthday: '1996-11-05',
@@ -55,7 +55,7 @@ export const Candidate_data = [
     applyDate: '2024-10-01',
   },
   {
-    CandidateID: 5,
+    ID: 5,
     CandidateName: 'Hoàng Đức Long',
     Gender: '0',
     Birthday: '1994-03-28',
@@ -65,6 +65,6 @@ export const Candidate_data = [
     RecruitmentName: 'Tuyển kỹ sư Node.js',
     RecruitmentRoundName: 'Phỏng vấn kỹ thuật',
     Rating: '5',
-    applyDate: '2024-10-01',
+    applyDate: '2024-10-06',
   },
 ]

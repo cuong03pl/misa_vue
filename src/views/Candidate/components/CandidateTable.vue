@@ -5,6 +5,7 @@
       :hasCheckbox="true"
       :headers="Candidate_header"
       :rows="candidates"
+      @getSelectRows="handleGetSelectedRows"
     >
       <template #cell-CandidateName="{ row, value }">
         <div class="avatar-cell">
@@ -41,7 +42,6 @@ import { Candidate_header } from '@/constants/header_data'
 import { getAvatar } from '@/utils/getAvatar'
 import { ref } from 'vue'
 import CandidateModal from '@/views/Candidate/components/CandidateModal.vue'
-import { useI18n } from 'vue-i18n'
 import MsTable from '@/components/ms-table/MsTable.vue'
 import TableFooter from '@/components/ms-table/TableFooter.vue'
 
@@ -54,7 +54,9 @@ defineProps({
 })
 //#endregion Props
 
-const { t } = useI18n()
+// #region Emits
+const emit = defineEmits(['getSelectRows'])
+//#endregion Emits
 
 //#region State
 const isOpen = ref(false)
@@ -79,6 +81,10 @@ const handleToggleModal = (item) => {
  */
 const handleSave = (data) => {
   console.log(data)
+}
+
+const handleGetSelectedRows = (data) => {
+  emit('getSelectRows', data)
 }
 //#endregion Methods
 </script>

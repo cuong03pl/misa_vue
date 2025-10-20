@@ -10,12 +10,7 @@
       <tr @dblclick="emit('dblclick', row)" v-for="(row, rowIndex) in rows" :key="rowIndex">
         <td v-if="hasCheckbox">
           <!-- Vmodel tự động checked nếu trong selectedRows có value -->
-          <input
-            :value="row.CandidateID"
-            v-model="selectedRows"
-            type="checkbox"
-            class="row-checkbox"
-          />
+          <input :value="row.ID" v-model="selectedRows" type="checkbox" class="row-checkbox" />
         </td>
         <td class="line-clamp-1" v-for="header in headers" :key="header.field">
           <slot
@@ -56,7 +51,7 @@ const props = defineProps({
 //#endregion Props
 
 //#region Emits
-const emit = defineEmits(['dblclick'])
+const emit = defineEmits(['dblclick', 'getSelectRows'])
 //#endregion Emits
 
 //#region State
@@ -66,8 +61,7 @@ const isAllSelected = ref(false)
 
 //#region Watchers
 watch(selectedRows, (newVal) => {
-  console.log(selectedRows)
-
+  emit('getSelectRows', newVal)
   isAllSelected.value = props.rows.length > 0 && selectedRows.value.length === props.rows.length
 })
 //#endregion Watchers
@@ -81,7 +75,7 @@ const toggleSelectAll = () => {
   if (isAllSelected.value) {
     selectedRows.value = []
   } else {
-    selectedRows.value = props.rows.map((r) => r.CandidateID)
+    selectedRows.value = props.rows.map((r) => r.ID)
   }
 }
 //#endregion Methods
