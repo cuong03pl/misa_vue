@@ -58,9 +58,7 @@
   <candidate-modal v-model:isOpen="isOpen" @save="handleSave" />
   <ms-confirm-modal @delete="handleDelete" v-model:isOpenConfirmModal="isOpenConfirm">
     <template #content>
-      <p class="text-center mt-2">
-        Bạn có chắc chắn muốn xóa {{ selectedRows.length }} ứng viên này?
-      </p>
+      Bạn có chắc chắn muốn xóa {{ selectedRows.length }} ứng viên này?
     </template>
   </ms-confirm-modal>
 </template>

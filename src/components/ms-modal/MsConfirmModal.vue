@@ -2,17 +2,19 @@
   <ms-modal :isOpen="isOpenConfirmModal" to="body">
     <div class="modal-confirm">
       <div class="overlay">
-        <div class="content rounded-md">
-          <div class="modal-confirm-body px-5 py-5">
-            <div class="flex justify-between items-center">
+        <div class="content rounded-md p-6">
+          <div class="modal-confirm-body">
+            <div class="head flex justify-between items-center">
               <h3 class="text-center">{{ t('common.confirm_delete') }}</h3>
               <span @click="emit('update:isOpenConfirmModal', false)" class="btn-close"
                 ><i class="fa-solid fa-xmark"></i
               ></span>
             </div>
-            <slot name="content"> </slot>
+            <div class="content my-6">
+              <slot name="content"> </slot>
+            </div>
           </div>
-          <div class="modal-confirm-footer flex justify-end gap-12 px-5 py-4">
+          <div class="modal-confirm-footer flex justify-end gap-8">
             <slot name="footer">
               <ms-button btnCancel @click="emit('update:isOpenConfirmModal', false)">{{
                 t('common.button.cancel')
@@ -52,7 +54,6 @@ const emit = defineEmits(['update:isOpenConfirmModal', 'delete'])
   background: white;
   max-width: 450px;
   width: 90%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .modal-confirm-body .icon-warning {
@@ -67,16 +68,12 @@ const emit = defineEmits(['update:isOpenConfirmModal', 'delete'])
 
 .modal-confirm-body h3 {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: bold;
   color: var(--text-color);
 }
 
-.modal-confirm-body p {
+.modal-confirm-body .content {
+  font-weight: 400;
   font-size: 14px;
-  color: #666;
-}
-
-.modal-confirm-footer {
-  border-top: 1px solid #e5e5e5;
 }
 </style>

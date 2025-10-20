@@ -16,7 +16,7 @@ import '@/assets/style/custom.css'
 const app = createApp(App)
 const options = {
   position: 'bottom-right',
-  timeout: 1000000,
+  timeout: 5000,
   icon: false,
 }
 
