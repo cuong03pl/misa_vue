@@ -12,6 +12,10 @@
   --btn-large: 40px;
   --btn-medium: 36px;
   --table-item-hover: #ffece5;
+  --toast-success: #61b636;
+  --toast-error: #b93315;
+  --toast-warning: #eb9340;
+  --toast-info: #3e9fec;
 }
 .icon {
   padding: 2px;
@@ -81,6 +85,9 @@
 }
 .gap-6 {
   gap: 6px;
+}
+.gap-8 {
+  gap: 8px;
 }
 .gap-12 {
   gap: 12px;

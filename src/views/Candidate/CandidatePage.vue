@@ -75,6 +75,7 @@ import CandidateTable from './components/CandidateTable.vue'
 import CandidateModal from './components/CandidateModal.vue'
 import MsConfirmModal from '@/components/ms-modal/MsConfirmModal.vue'
 import { useToast } from 'vue-toastification'
+import MsToast from '@/components/ms-toast/MsToast.vue'
 
 const { t } = useI18n()
 
@@ -104,7 +105,10 @@ const handleDelete = () => {
     candidates.value = candidates.value.filter((item) => !selectedRows.value.includes(item.ID))
     isOpenConfirm.value = false
 
-    toast.success('Xóa thành công')
+    toast.success({
+      component: MsToast,
+      props: { type: 'success', title: 'Thành công!', message: 'Thao tác thành công' },
+    })
   } catch (error) {
     toast.error('Xóa thất bại')
   }

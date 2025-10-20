@@ -1,0 +1,16 @@
+.Vue-Toastification__toast-component-body {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+.Vue-Toastification__toast {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+.Vue-Toastification__close-button {
+  color: black;
+  opacity: 1; /* Cần fix */
+}
