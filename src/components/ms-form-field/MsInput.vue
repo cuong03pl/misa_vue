@@ -1,15 +1,17 @@
 <template>
-  <span class="text-primary">{{ label }} </span>
-  <input
-    :name="name"
-    :type="type"
-    :placeholder="placeholder"
-    :value="modelValue"
-    @input="emit('update:modelValue', $event.target.value)"
-  />
-  <small v-if="isRequired" :class="['error-text', error_message && 'show']">{{
-    error_message
-  }}</small>
+  <div class="form-input flex flex-1" :class="flexRow ? 'flex-row items-center' : 'flex-col'">
+    <span class="text-primary">{{ label }} </span>
+    <input
+      :name="name"
+      :type="type"
+      :placeholder="placeholder"
+      :value="modelValue"
+      @input="emit('update:modelValue', $event.target.value)"
+    />
+    <small v-if="isRequired" :class="['error-text', error_message && 'show']">{{
+      error_message
+    }}</small>
+  </div>
 </template>
 
 <script setup>
@@ -22,6 +24,7 @@ defineProps({
   isRequired: Boolean,
   modelValue: String,
   error_message: String,
+  flexRow: Boolean,
 })
 //#endregion Props
 
@@ -30,7 +33,46 @@ const emit = defineEmits(['update:modelValue'])
 //#endregion Emits
 </script>
 
-<style>
+<style scoped>
+.form-input {
+  gap: 8px;
+}
+.form-input input {
+  height: var(--input-form-height);
+  padding: 0 8px 0 12px;
+  display: flex;
+  width: 100%;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.form-input textarea {
+  padding: 4px 8px;
+  display: block;
+  width: 100%;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.form-input input:focus {
+  border: 1px solid var(--btn-primary);
+  outline: none;
+}
+
+/* focus */
+input:focus {
+  border: 1px solid var(--btn-primary);
+  outline: none;
+}
+input.readonly {
+}
+
 .error-text {
   color: red;
   font-size: 13px;

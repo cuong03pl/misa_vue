@@ -1,8 +1,13 @@
 <template>
-  <div class="text-primary">{{ label }}</div>
-  <select :value="modelValue ?? 'default'" @input="emit('update:modelValue', $event.target.value)">
-    <slot />
-  </select>
+  <div class="select-list flex flex-1 flex-col">
+    <div class="text-primary">{{ label }}</div>
+    <select
+      :value="modelValue ?? 'default'"
+      @input="emit('update:modelValue', $event.target.value)"
+    >
+      <slot />
+    </select>
+  </div>
 </template>
 
 <script setup>
@@ -18,4 +23,20 @@ const emit = defineEmits(['update:modelValue'])
 //#endregion Emits
 </script>
 
-<style></style>
+<style>
+.select-list {
+  gap: 8px;
+}
+.select-list select {
+  height: var(--input-form-height);
+  padding: 0 8px 0 12px;
+
+  display: block;
+  width: 100%;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+</style>

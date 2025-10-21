@@ -12,6 +12,7 @@ import MsSelect from './components/ms-form-field/MsSelect.vue'
 import Toast from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 import '@/assets/style/custom.css'
+import MsTextarea from './components/ms-form-field/MsTextarea.vue'
 
 const app = createApp(App)
 const options = {
@@ -23,6 +24,7 @@ const options = {
 app.use(Toast, options)
 app.component('MsButton', MsButton)
 app.component('MsInput', MsInput)
+app.component('MsTextarea', MsTextarea)
 app.component('MsSelect', MsSelect)
 app.use(router)
 app.use(i18n)

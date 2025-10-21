@@ -41,59 +41,47 @@
             </div>
             <!-- ngày sinh, giới tính -->
             <div class="flex justify-between gap-12 mt-5">
-              <div class="form-input flex flex-1 flex-col">
-                <ms-input v-model="birthday" v-bind="birthdayAttrs" label="Ngày sinh" type="date" />
-              </div>
-              <div class="select-list flex flex-1 flex-col">
-                <ms-select v-model="gender" label="Chọn giới tính">
-                  <option value="default">Chọn giới tính</option>
-                  <option :value="Gender.MALE">Nam</option>
-                  <option :value="Gender.FEMALE">Nữ</option>
-                </ms-select>
-              </div>
+              <ms-input v-model="birthday" v-bind="birthdayAttrs" label="Ngày sinh" type="date" />
+              <ms-select v-model="gender" label="Chọn giới tính">
+                <option value="default">Chọn giới tính</option>
+                <option :value="Gender.MALE">Nam</option>
+                <option :value="Gender.FEMALE">Nữ</option>
+              </ms-select>
             </div>
             <!-- khu vực  -->
             <div class="flex justify-between gap-12 mt-5">
-              <div class="select-list flex flex-1 flex-col">
-                <ms-select label="Khu vực">
-                  <option value="default">Chọn giới tính</option>
-                  <option value="volvo">Nam</option>
-                  <option value="saab">Nữ</option>
-                </ms-select>
-              </div>
+              <ms-select label="Khu vực">
+                <option value="default">Chọn giới tính</option>
+                <option value="volvo">Nam</option>
+                <option value="saab">Nữ</option>
+              </ms-select>
             </div>
             <!-- SDT, Email -->
             <div class="flex justify-between gap-12 mt-5">
-              <div class="form-input flex flex-1 flex-col">
-                <ms-input
-                  :isRequired="true"
-                  label="Số điện thoại"
-                  placeholder="Nhập số điện thoại"
-                  type="text"
-                  name="phone"
-                  v-model="phone"
-                  v-bind="phoneAttrs"
-                  :error_message="errors.phone"
-                />
-              </div>
-              <div class="form-input flex flex-1 flex-col">
-                <ms-input
-                  name="email"
-                  :isRequired="true"
-                  label="Email"
-                  placeholder="Nhập Email"
-                  type="text"
-                  v-model="email"
-                  v-bind="emailAttrs"
-                  :error_message="errors.email"
-                />
-              </div>
+              <ms-input
+                :isRequired="true"
+                label="Số điện thoại"
+                placeholder="Nhập số điện thoại"
+                type="text"
+                name="phone"
+                v-model="phone"
+                v-bind="phoneAttrs"
+                :error_message="errors.phone"
+              />
+              <ms-input
+                name="email"
+                :isRequired="true"
+                label="Email"
+                placeholder="Nhập Email"
+                type="text"
+                v-model="email"
+                v-bind="emailAttrs"
+                :error_message="errors.email"
+              />
             </div>
             <!-- Địa chỉ -->
             <div class="flex justify-between gap-12 mt-5">
-              <div class="form-input flex flex-1 flex-col">
-                <ms-input label="Địa chỉ" placeholder="Nhập địa chỉ" type="text" />
-              </div>
+              <ms-input label="Địa chỉ" placeholder="Nhập địa chỉ" type="text" />
             </div>
             <!-- Học vấn -->
             <div class="education mt-5">
@@ -101,17 +89,32 @@
               <ul class="flex flex-col gap-12">
                 <li>
                   <div class="flex items-center justify-between gap-12">
-                    <ms-input label="Trình độ đào tạo" placeholder="Nhập địa chỉ" type="text" />
+                    <ms-input
+                      flexRow
+                      label="Trình độ đào tạo"
+                      placeholder="Nhập địa chỉ"
+                      type="text"
+                    />
                   </div>
                 </li>
                 <li>
                   <div class="flex items-center justify-between gap-12">
-                    <ms-input label="Trình độ đào tạo" placeholder="Nhập địa chỉ" type="text" />
+                    <ms-input
+                      flexRow
+                      label="Trình độ đào tạo"
+                      placeholder="Nhập địa chỉ"
+                      type="text"
+                    />
                   </div>
                 </li>
                 <li>
                   <div class="flex items-center justify-between gap-12">
-                    <ms-input label="Trình độ đào tạo" placeholder="Nhập địa chỉ" type="text" />
+                    <ms-input
+                      flexRow
+                      label="Trình độ đào tạo"
+                      placeholder="Nhập địa chỉ"
+                      type="text"
+                    />
                   </div>
                 </li>
               </ul>
@@ -149,17 +152,15 @@
             </div>
             <!-- Nơi làm việc gần đây -->
             <div class="flex justify-between gap-12 mt-5">
-              <div class="form-input flex flex-1 flex-col">
-                <ms-input
-                  label="Nơi làm việc gần đây"
-                  placeholder="Nhập nơi làm việc gần đây"
-                  type="text"
-                />
-              </div>
+              <ms-input
+                label="Nơi làm việc gần đây"
+                placeholder="Nhập nơi làm việc gần đây"
+                type="text"
+              />
             </div>
             <!-- Thời gian  -->
             <div class="flex justify-between gap-12 mt-5">
-              <div class="form-input flex flex-1 flex-col">
+              <div class="flex flex-1 flex-col">
                 <span class="text-primary">Thời gian </span>
                 <div class="flex justify-between gap-12">
                   <div class="flex-1">
@@ -174,25 +175,20 @@
 
             <!-- Vị trí công việc -->
             <div class="flex justify-between gap-12 mt-5">
-              <div class="form-input flex flex-1 flex-col">
-                <ms-input
-                  :isRequired="true"
-                  label="Vị trí công việc"
-                  placeholder="Nhập vị trí công việc"
-                  type="text"
-                  name="position"
-                  v-model="position"
-                  v-bind="positionAttrs"
-                  :error_message="errors.position"
-                />
-              </div>
+              <ms-input
+                :isRequired="true"
+                label="Vị trí công việc"
+                placeholder="Nhập vị trí công việc"
+                type="text"
+                name="position"
+                v-model="position"
+                v-bind="positionAttrs"
+                :error_message="errors.position"
+              />
             </div>
             <!-- Vị trí công việc -->
             <div class="flex justify-between gap-12 mt-5">
-              <div class="form-input flex flex-1 flex-col">
-                <span class="text-primary">Mô tả công việc</span>
-                <textarea rows="3" type="text" placeholder="Nhập mô tả công việc"></textarea>
-              </div>
+              <ms-textarea label="Mô tả công việc" placeholder="Nhập mô tả công việc" />
             </div>
           </div>
         </div>
@@ -309,50 +305,6 @@ const onSubmit = handleSubmit((values) => {
 
 .upload-avt span {
   color: #ccc;
-}
-
-.form-input,
-.select-list {
-  gap: 6px;
-}
-.form-input input {
-  height: var(--input-form-height);
-  padding: 4px 8px;
-  display: block;
-  width: 100%;
-  outline: none;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-  color: var(--text-color);
-}
-
-.form-input textarea {
-  padding: 4px 8px;
-  display: block;
-  width: 100%;
-  outline: none;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-  color: var(--text-color);
-}
-
-.form-input input:focus {
-  border: 1px solid var(--btn-primary);
-  outline: none;
-}
-
-.select-list select {
-  height: var(--input-form-height);
-  padding: 4px 8px;
-  display: block;
-  width: 100%;
-  outline: none;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-  color: var(--text-color);
 }
 
 .education ul {
