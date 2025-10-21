@@ -36,3 +36,13 @@
 .collapsed .btn-toggle-text {
   display: none;
 }
+
+.large {
+  height: var(--large);
+}
+.medium {
+  height: var(--medium);
+}
+.small {
+  height: var(--small);
+}

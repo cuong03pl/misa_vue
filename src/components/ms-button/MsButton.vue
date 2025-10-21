@@ -10,9 +10,9 @@
       btnSecondary && 'btn-secondary',
       btnCombo && 'btn-combo',
       btnToggle && 'btn-toggle',
-      large && 'btn-large',
-      medium && 'btn-medium',
-      small && 'btn-small',
+      large && 'large',
+      medium && 'medium',
+      small && 'small',
       disabled && 'disabled',
     ]"
   >
@@ -61,17 +61,6 @@ const emit = defineEmits(['click'])
   cursor: pointer;
   font-weight: 500;
   transition: background 0.2s ease;
-}
-
-/* --- Size  --- */
-.btn-large {
-  height: var(--btn-large);
-}
-.btn-medium {
-  height: var(--btn-medium);
-}
-.btn-small {
-  height: var(--btn-small);
 }
 
 /* --- Color  --- */
