@@ -2,6 +2,7 @@
   <div class="form-input flex flex-1" :class="flexRow ? 'flex-row items-center' : 'flex-col'">
     <span class="text-primary">{{ label }} </span>
     <input
+      :class="[large && 'input-large', medium && 'input-medium', small && 'input-small']"
       :name="name"
       :type="type"
       :placeholder="placeholder"
@@ -25,6 +26,9 @@ defineProps({
   modelValue: String,
   error_message: String,
   flexRow: Boolean,
+  large: Boolean,
+  medium: Boolean,
+  small: Boolean,
 })
 //#endregion Props
 
@@ -34,6 +38,17 @@ const emit = defineEmits(['update:modelValue'])
 </script>
 
 <style scoped>
+/* --- Size  --- */
+.input-large {
+  height: var(--input-large);
+}
+.input-medium {
+  height: var(--input-medium);
+}
+.input-small {
+  height: var(--input-small);
+}
+
 .form-input {
   gap: 8px;
 }
