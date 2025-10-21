@@ -3,15 +3,17 @@
     :type="type"
     @click="emit('click')"
     :class="[
-      'text-btn gap-12 btn',
+      'text-btn btn',
       isOnlyIcon && 'btn-only-icon',
       btnPrimary && 'btn-primary',
       btnDelete && 'btn-delete',
-      btnCancel && 'btn-cancel',
-      btnTwoIcons && 'btn-two-icons',
+      btnSecondary && 'btn-secondary',
+      btnCombo && 'btn-combo',
       btnToggle && 'btn-toggle',
       large && 'btn-large',
       medium && 'btn-medium',
+      small && 'btn-small',
+      disabled && 'disabled',
     ]"
   >
     <slot name="left-icon" />
@@ -26,11 +28,13 @@ defineProps({
   isOnlyIcon: Boolean,
   btnPrimary: Boolean,
   btnDelete: Boolean,
-  btnCancel: Boolean,
-  btnTwoIcons: Boolean,
+  btnSecondary: Boolean,
+  btnCombo: Boolean,
   btnToggle: Boolean,
   large: Boolean,
   medium: Boolean,
+  small: Boolean,
+  disabled: Boolean,
   type: String,
 })
 //#endregion Props
@@ -41,6 +45,7 @@ const emit = defineEmits(['click'])
 </script>
 
 <style>
+/* base */
 .text-btn {
   font-weight: 500;
   font-size: 14px;
@@ -52,28 +57,37 @@ const emit = defineEmits(['click'])
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
   font-weight: 500;
   transition: background 0.2s ease;
-  padding: 12px 16px;
 }
 
 /* --- Size  --- */
 .btn-large {
   height: var(--btn-large);
 }
-
 .btn-medium {
   height: var(--btn-medium);
 }
+.btn-small {
+  height: var(--btn-small);
+}
 
 /* --- Color  --- */
-.btn-primary,
-.btn-two-icons {
+.btn-primary {
   background: var(--btn-primary);
   color: #fff;
   min-width: 80px;
+  padding: 0 16px;
+}
+
+.btn-secondary {
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #d9d9d9;
+  min-width: 80px;
+  padding: 0 16px;
 }
 
 .btn-delete,
@@ -83,54 +97,54 @@ const emit = defineEmits(['click'])
   min-width: 80px;
 }
 
-.btn-delete:hover,
-.btn-confirm-delete:hover {
-  background: #c62828;
-}
-
-.btn-cancel,
-.btn-cancel-confirm {
-  background: #f5f5f5;
-  color: #333;
-  border: 1px solid #d9d9d9;
-  min-width: 80px;
-}
-
-.btn-cancel-confirm:hover {
-  background: #e8e8e8;
-}
 .btn-toggle {
   background: var(--btn-primary);
   color: #fff;
+  gap: 4px;
+  padding: 12px 16px;
 }
+
 /* --- Special styles --- */
 .btn-only-icon {
   border: 1px solid #cccccc87;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 12px;
+  padding: 8px;
+  height: 36px;
+  width: 36px;
 }
 
-.btn-two-icons div {
-  border-left: 1px solid #ccc;
+/* combo button */
+.btn-combo {
+  background: var(--btn-primary);
+  color: #fff;
   padding-left: 12px;
 }
+.btn-combo div {
+  border-left: 1px solid #ccc;
+  padding: 0 12px;
+  height: 100%;
+}
+.btn-combo span {
+  padding: 0 16px 0 4px;
+}
+.btn-combo i {
+  /* font-size: 20px; */
+}
 
-.btn-two-icons i,
-.btn-two-icons div i {
+/* new */
+.link-btn {
   color: #fff;
 }
-
-.btn-close {
-  cursor: pointer;
+.btn-one-icon {
+  gap: 4px;
+  padding: 0 16px 0 12px;
+  min-width: 80px;
 }
 
-.btn-close i {
-  font-size: 20px;
-}
-
-.collapsed .btn-toggle-text {
-  display: none;
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.56;
 }
 </style>

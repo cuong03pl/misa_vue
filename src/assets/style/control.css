@@ -14,13 +14,6 @@
   font-size: 14px;
 }
 
-.text-btn {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: 0.014em;
-}
-
 .text-heading-1 {
   font-weight: 700;
   font-size: 20px;
@@ -30,4 +23,16 @@
 
 .input-error {
   border: 1px solid red !important;
+}
+/* btn close */
+.btn-close {
+  cursor: pointer;
+}
+
+.btn-close i {
+  font-size: 20px;
+}
+
+.collapsed .btn-toggle-text {
+  display: none;
 }

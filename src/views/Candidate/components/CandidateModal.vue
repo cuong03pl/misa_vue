@@ -9,7 +9,7 @@
               ? t('common.button.add', { msg: 'ứng viên' })
               : t('common.button.edit', { msg: 'ứng viên' })
           }}</span>
-          <span @click="emit('update:isOpen', false)" class="icon"
+          <span @click="emit('update:isOpen', false)" class="btn-close"
             ><i class="fa-solid fa-xmark"></i
           ></span>
         </slot>
@@ -200,7 +200,7 @@
 
       <div class="footer flex justify-end px-4 py-4 gap-12">
         <slot name="footer">
-          <ms-button btnCancel medium @click="emit('update:isOpen', false)">{{
+          <ms-button btnSecondary medium @click="emit('update:isOpen', false)">{{
             t('common.button.cancel')
           }}</ms-button>
           <ms-button type="submit" btnPrimary medium>{{ t('common.button.save') }}</ms-button>

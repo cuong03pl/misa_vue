@@ -1,7 +1,7 @@
 <template>
   <div class="toast" :class="toastClass">
     <div class="flex items-center gap-8">
-      <span><i class="icon" :class="iconClass"></i></span>
+      <span><i class="btn-close" :class="iconClass"></i></span>
       <div class="flex gap-6">
         <p class="title font-semibold">{{ title }}</p>
         <p class="message text-sm flex items-center">{{ message }}</p>

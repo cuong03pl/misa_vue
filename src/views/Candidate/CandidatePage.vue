@@ -15,13 +15,13 @@
         >
           <i class="fa-solid fa-trash-can"></i>
         </ms-button>
-        <ms-button btnTwoIcons btnPrimary large @click="hanleToggleModal">
+        <ms-button btnCombo large @click="hanleToggleModal">
           <template #left-icon>
-            <span><i class="fa-solid fa-plus text-white"></i></span>
+            <i class="fa-solid fa-plus text-white"></i>
           </template>
           <span class="text-white text-btn">{{ t('common.button.add', { msg: 'ứng viên' }) }}</span>
           <template #right-icon>
-            <div class="dropdown flex items-center justify-between">
+            <div class="flex items-center justify-between">
               <i class="fa-solid fa-chevron-down"></i>
             </div>
           </template>

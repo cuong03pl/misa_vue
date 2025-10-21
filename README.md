@@ -19,7 +19,8 @@ Phân vùng và comment hàm
   \*/
   --
   select all
-  focus ô đầu
 
   ////now
   combox vừa tìm kiếm vừa select
+  Custom button, text input, dropdownlist, combobox, datepicker theo style guild
+  focus ô đầu
