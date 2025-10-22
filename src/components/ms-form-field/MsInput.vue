@@ -54,22 +54,6 @@ const emit = defineEmits(['update:modelValue'])
   color: var(--text-color);
 }
 
-.form-input textarea {
-  padding: 4px 8px;
-  display: block;
-  width: 100%;
-  outline: none;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-  color: var(--text-color);
-}
-
-.form-input input:focus {
-  border: 1px solid var(--btn-primary);
-  outline: none;
-}
-
 /* focus */
 input:focus {
   border: 1px solid var(--btn-primary);
@@ -81,7 +65,6 @@ input.readonly {
 .error-text {
   color: red;
   font-size: 13px;
-  margin-top: 2px;
   min-height: 16px;
   display: none;
 }

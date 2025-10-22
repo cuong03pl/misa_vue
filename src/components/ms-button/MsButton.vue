@@ -1,18 +1,11 @@
 <template>
   <button
-    :type="type"
     @click="emit('click')"
     :class="[
-      'text-btn btn',
-      isOnlyIcon && 'btn-only-icon',
-      btnPrimary && 'btn-primary',
-      btnDelete && 'btn-delete',
-      btnSecondary && 'btn-secondary',
-      btnCombo && 'btn-combo',
-      btnToggle && 'btn-toggle',
-      large && 'large',
-      medium && 'medium',
-      small && 'small',
+      'ms-btn',
+      `ms-button-${type}`,
+      isOnlyIcon && 'ms-button-only-icon',
+      !!size && size,
       disabled && 'disabled',
     ]"
   >
@@ -26,14 +19,7 @@
 //#region Props
 defineProps({
   isOnlyIcon: Boolean,
-  btnPrimary: Boolean,
-  btnDelete: Boolean,
-  btnSecondary: Boolean,
-  btnCombo: Boolean,
-  btnToggle: Boolean,
-  large: Boolean,
-  medium: Boolean,
-  small: Boolean,
+  size: String,
   disabled: Boolean,
   type: String,
 })
@@ -46,14 +32,7 @@ const emit = defineEmits(['click'])
 
 <style>
 /* base */
-.text-btn {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: 0.014em;
-}
-
-.btn {
+.ms-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,17 +40,20 @@ const emit = defineEmits(['click'])
   cursor: pointer;
   font-weight: 500;
   transition: background 0.2s ease;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.014em;
 }
 
 /* --- Color  --- */
-.btn-primary {
+.ms-button-primary {
   background: var(--btn-primary);
   color: #fff;
   min-width: 80px;
   padding: 0 16px;
 }
 
-.btn-secondary {
+.ms-button-secondary {
   background: #f5f5f5;
   color: #333;
   border: 1px solid #d9d9d9;
@@ -79,22 +61,22 @@ const emit = defineEmits(['click'])
   padding: 0 16px;
 }
 
-.btn-delete,
+.ms-button-delete,
 .btn-confirm-delete {
   background: #d32f2f;
   color: #fff;
   min-width: 80px;
 }
 
-.btn-toggle {
+.ms-button-toggle {
   background: var(--btn-primary);
   color: #fff;
   gap: 4px;
-  padding: 12px 16px;
+  /* padding: 12px 16px; */
 }
 
 /* --- Special styles --- */
-.btn-only-icon {
+.ms-button-only-icon {
   border: 1px solid #cccccc87;
   display: flex;
   justify-content: center;
@@ -105,28 +87,28 @@ const emit = defineEmits(['click'])
 }
 
 /* combo button */
-.btn-combo {
+.ms-button-combo {
   background: var(--btn-primary);
   color: #fff;
   padding-left: 12px;
 }
-.btn-combo div {
+.ms-button-combo div {
   border-left: 1px solid #ccc;
   padding: 0 12px;
   height: 100%;
 }
-.btn-combo span {
+.ms-button-combo span {
   padding: 0 16px 0 4px;
 }
-.btn-combo i {
+.ms-button-combo i {
   /* font-size: 20px; */
 }
 
 /* new */
-.link-btn {
+.ms-button-link {
   color: #fff;
 }
-.btn-one-icon {
+.ms-button-one-icon {
   gap: 4px;
   padding: 0 16px 0 12px;
   min-width: 80px;

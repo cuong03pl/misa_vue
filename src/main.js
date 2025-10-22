@@ -13,7 +13,11 @@ import Toast from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 import '@/assets/style/custom.css'
 import MsTextarea from './components/ms-form-field/MsTextarea.vue'
-
+import PrimeVue from 'primevue/config'
+import Aura from '@primevue/themes/aura' // ví dụ theme Aura
+import 'primeicons/primeicons.css'
+import MsSelectV2 from './components/ms-form-field/MsSelectV2.vue'
+import MsCombobox from './components/ms-form-field/MsCombobox.vue'
 const app = createApp(App)
 const options = {
   position: 'bottom-right',
@@ -26,6 +30,13 @@ app.component('MsButton', MsButton)
 app.component('MsInput', MsInput)
 app.component('MsTextarea', MsTextarea)
 app.component('MsSelect', MsSelect)
+app.component('MsSelectV2', MsSelectV2)
+app.component('MsCombobox', MsCombobox)
+app.use(PrimeVue, {
+  theme: {
+    preset: Aura,
+  },
+})
 app.use(router)
 app.use(i18n)
 app.mount('#app')

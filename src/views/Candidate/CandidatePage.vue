@@ -8,14 +8,13 @@
       <div class="flex items-center gap-12">
         <ms-button
           v-if="selectedRows.length > 0"
-          btnDelete
-          btnOnlyIcon
-          large
+          type="delete"
+          size="large"
           @click="hanleToggleModalConfirm"
         >
           <i class="fa-solid fa-trash-can"></i>
         </ms-button>
-        <ms-button btnCombo large @click="hanleToggleModal">
+        <ms-button type="combo" size="large" @click="hanleToggleModal">
           <template #left-icon>
             <i class="fa-solid fa-plus text-white"></i>
           </template>

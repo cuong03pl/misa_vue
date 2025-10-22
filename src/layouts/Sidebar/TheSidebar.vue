@@ -3,7 +3,7 @@
     <ul class="flex flex-col gap-6">
       <SidebarItem v-for="item in sidebar_data" :item="item" :key="item.id" />
     </ul>
-    <ms-button large btnToggle @click="handleToggle">
+    <ms-button size="large" type="toggle" @click="handleToggle">
       <template #left-icon>
         <i class="fa-solid fa-chevron-left"></i>
       </template>

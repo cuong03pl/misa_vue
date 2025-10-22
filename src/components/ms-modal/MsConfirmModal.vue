@@ -16,10 +16,10 @@
           </div>
           <div class="modal-confirm-footer flex justify-end gap-8">
             <slot name="footer">
-              <ms-button btnSecondary medium @click="emit('update:isOpenConfirmModal', false)">{{
+              <ms-button btnSecondary size="medium" @click="emit('update:isOpenConfirmModal', false)">{{
                 t('common.button.cancel')
               }}</ms-button>
-              <ms-button @click="emit('delete')" btnDelete medium>{{
+              <ms-button @click="emit('delete')" btnDelete size="medium">{{
                 t('common.button.delete')
               }}</ms-button>
             </slot>

@@ -1,18 +1,25 @@
 <template>
   <div class="select-list flex flex-1 flex-col">
     <div class="text-primary">{{ label }}</div>
-    <select
-      :class="[large && 'large', medium && 'medium', small && 'small']"
+    <Select
       :value="modelValue ?? 'default'"
       @input="emit('update:modelValue', $event.target.value)"
-    >
-      <slot />
-    </select>
+      editable
+      showClear
+      :options="cities"
+      optionLabel="name"
+      placeholder="Select a City"
+      :class="[large && 'large', medium && 'medium', small && 'small']"
+    />
     <small v-if="isRequired" :class="['error-text', !error_message && 'show']">tét nè </small>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import Select from 'primevue/select'
+import { Dropdown } from 'primevue'
+
 //#region Props
 defineProps({
   label: String,
@@ -28,6 +35,17 @@ defineProps({
 //#region Emits
 const emit = defineEmits(['update:modelValue'])
 //#endregion Emits
+const selectedCity = ref()
+const cities = ref([
+  { name: 'New York', code: 'NY' },
+  { name: 'Rome', code: 'RM' },
+  { name: 'London', code: 'LDN' },
+  { name: 'Istanbul', code: 'IST' },
+  { name: 'Paris', code: 'PRS' },
+  { name: 'Paris', code: 'PRS' },
+  { name: 'Paris', code: 'PRS' },
+  { name: 'Paris', code: 'PRS' },
+])
 </script>
 
 <style>
@@ -46,10 +64,13 @@ const emit = defineEmits(['update:modelValue'])
   font-size: 14px;
   color: var(--text-color);
 }
-
-select:focus {
-  border: 1px solid var(--toast-success);
+::v-deep(.p-select-list-container) {
+  padding: 0 !important;
 }
+
+/* select:focus {
+  border: 1px solid var(--toast-success);
+} */
 
 .error-text {
   color: red;
@@ -59,5 +80,17 @@ select:focus {
 }
 .error-text.show {
   display: block;
+}
+/* custom */
+.p-select-list-container {
+  max-height: 200px !important;
+  padding-right: 0 !important;
+}
+.p-select-option {
+  height: 36px;
+}
+
+.p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus {
+  background-color: #edf8eb !important;
 }
 </style>

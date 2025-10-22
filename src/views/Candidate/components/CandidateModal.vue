@@ -42,11 +42,12 @@
             <!-- ngày sinh, giới tính -->
             <div class="flex justify-between gap-12 mt-5">
               <ms-input v-model="birthday" v-bind="birthdayAttrs" label="Ngày sinh" type="date" />
-              <ms-select v-model="gender" label="Chọn giới tính">
+              <!-- <ms-select isRequired v-model="gender" label="Chọn giới tính">
                 <option value="default">Chọn giới tính</option>
                 <option :value="Gender.MALE">Nam</option>
                 <option :value="Gender.FEMALE">Nữ</option>
-              </ms-select>
+              </ms-select> -->
+              <ms-select-v-2 label="test" large />
             </div>
             <!-- khu vực  -->
             <div class="flex justify-between gap-12 mt-5">
@@ -186,9 +187,13 @@
                 :error_message="errors.position"
               />
             </div>
+
             <!-- Vị trí công việc -->
             <div class="flex justify-between gap-12 mt-5">
               <ms-textarea label="Mô tả công việc" placeholder="Nhập mô tả công việc" />
+            </div>
+            <div class="flex justify-between gap-12 mt-5">
+              <ms-combobox label="Mô tả công việc" placeholder="Nhập mô tả công việc" />
             </div>
           </div>
         </div>
@@ -196,10 +201,10 @@
 
       <div class="footer flex justify-end px-4 py-4 gap-12">
         <slot name="footer">
-          <ms-button btnSecondary medium @click="emit('update:isOpen', false)">{{
+          <ms-button type="secondary" size="medium" @click="emit('update:isOpen', false)">{{
             t('common.button.cancel')
           }}</ms-button>
-          <ms-button type="submit" btnPrimary medium>{{ t('common.button.save') }}</ms-button>
+          <ms-button  type="primary" size="medium">{{ t('common.button.save') }}</ms-button>
         </slot>
       </div>
     </form>
