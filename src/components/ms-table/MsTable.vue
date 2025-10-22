@@ -105,29 +105,19 @@ const toggleSelectAll = () => {
   user-select: none;
 }
 
-thead {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  position: sticky;
-  top: -5px;
-  z-index: 10;
-}
 
-th {
-  padding: 12px 16px;
-  text-align: left;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-color);
-  white-space: nowrap;
-}
 td {
-  padding: 12px 16px;
+  padding: 0 16px;
   font-size: 14px;
   color: var(--text-color);
   border-bottom: 1px solid #d5d6d9;
+  height: var(--row-height); 
+  box-sizing: border-box; 
+  vertical-align: middle; 
+
 }
 tbody tr {
+  height: var(--row-height); 
   transition: background-color 0.15s;
   cursor: pointer;
 }

@@ -2,7 +2,7 @@
   <ms-modal to="body" :isOpen="isOpen">
     <form @submit="onSubmit" class="modal-content rounded-md">
       <!-- head -->
-      <div class="modal-head px-4 py-4 flex justify-between items-center">
+      <div class="modal-head  flex justify-between items-center">
         <slot name="head">
           <span class="text-2xl font-bold">{{
             mode !== 'edit'
@@ -14,9 +14,9 @@
           ></span>
         </slot>
       </div>
-      <div class="scroll px-4 py-4">
+      <div class="scroll modal-body ">
         <!-- upload -->
-        <div class="upload flex flex-col items-center justify-center gap-12 mt-5 rounded-md">
+        <div class="upload flex flex-col items-center justify-center gap-12 rounded-md">
           <p class="upload-drag">Kéo thả hoặc bấm vào để tải CV</p>
           <p class="sub">Chấp nhận jpge, png, pdf, ....</p>
         </div>
@@ -47,7 +47,7 @@
                 <option :value="Gender.MALE">Nam</option>
                 <option :value="Gender.FEMALE">Nữ</option>
               </ms-select> -->
-              <ms-select-v-2 label="test" large />
+              <ms-select-v-2 label="test" size="large" />
             </div>
             <!-- khu vực  -->
             <div class="flex justify-between gap-12 mt-5">
@@ -199,7 +199,7 @@
         </div>
       </div>
 
-      <div class="footer flex justify-end px-4 py-4 gap-12">
+      <div class="modal-footer flex justify-end ">
         <slot name="footer">
           <ms-button type="secondary" size="medium" @click="emit('update:isOpen', false)">{{
             t('common.button.cancel')
@@ -270,15 +270,7 @@ const onSubmit = handleSubmit((values) => {
 </script>
 
 <style>
-.modal-content {
-  position: absolute;
-  width: 35%;
-  max-height: 90vh;
-  background: white;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-}
+
 
 .upload {
   padding: 32px 24px;
@@ -332,7 +324,5 @@ const onSubmit = handleSubmit((values) => {
   border: 1px solid var(--btn-primary);
 }
 
-.footer button {
-  width: 50px;
-}
+
 </style>

@@ -9,7 +9,7 @@
       :options="cities"
       optionLabel="name"
       placeholder="Select a City"
-      :class="[large && 'large', medium && 'medium', small && 'small']"
+      :class="[!!size && size]"
     />
     <small v-if="isRequired" :class="['error-text', !error_message && 'show']">tét nè </small>
   </div>
@@ -18,14 +18,11 @@
 <script setup>
 import { ref } from 'vue'
 import Select from 'primevue/select'
-import { Dropdown } from 'primevue'
 
 //#region Props
 defineProps({
   label: String,
-  large: Boolean,
-  medium: Boolean,
-  small: Boolean,
+  size: String,
   isRequired: Boolean,
   error_message: String,
   modelValue: [String, Number],
@@ -35,7 +32,6 @@ defineProps({
 //#region Emits
 const emit = defineEmits(['update:modelValue'])
 //#endregion Emits
-const selectedCity = ref()
 const cities = ref([
   { name: 'New York', code: 'NY' },
   { name: 'Rome', code: 'RM' },

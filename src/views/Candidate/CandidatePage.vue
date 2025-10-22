@@ -131,7 +131,7 @@ watch(q, (newVal) => {
 
 <style scoped>
 .content {
-  width: 80%;
+  width: 50%;
   flex: 1;
   background: #ecebf0;
   transition: all 0.3s ease;

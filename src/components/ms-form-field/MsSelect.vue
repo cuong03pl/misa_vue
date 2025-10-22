@@ -2,7 +2,7 @@
   <div class="select-list flex flex-1 flex-col">
     <div class="text-primary">{{ label }}</div>
     <select
-      :class="[large && 'large', medium && 'medium', small && 'small']"
+      :class="[!!size && size]"
       :value="modelValue ?? 'default'"
       @input="emit('update:modelValue', $event.target.value)"
     >
@@ -16,9 +16,7 @@
 //#region Props
 defineProps({
   label: String,
-  large: Boolean,
-  medium: Boolean,
-  small: Boolean,
+  size: String,
   isRequired: Boolean,
   error_message: String,
   modelValue: [String, Number],

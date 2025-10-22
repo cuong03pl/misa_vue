@@ -1,6 +1,6 @@
 <template>
   <div :class="['side-bar flex flex-col justify-between', !isShow && 'collapsed']">
-    <ul class="flex flex-col gap-6">
+    <ul class="flex flex-col gap-4">
       <SidebarItem v-for="item in sidebar_data" :item="item" :key="item.id" />
     </ul>
     <ms-button size="large" type="toggle" @click="handleToggle">
@@ -39,7 +39,7 @@ const handleToggle = () => {
   background: linear-gradient(to bottom, var(--side-bar-from), var(--side-bar-to));
 
   width: 250px;
-  padding: 20px 8px;
+  padding: 20px 12px;
   transition: all 0.3s ease;
 }
 

@@ -16,7 +16,7 @@ defineProps({
   </Teleport>
 </template>
 
-<style>
+<style >
 .modal {
   position: relative;
   display: flex;
@@ -34,5 +34,25 @@ defineProps({
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.modal-content {
+  position: absolute;
+  width: 35%;
+  max-height: 90vh;
+  background: white;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+.modal-head {
+  padding: 24px;
+}
+
+.modal-body {
+ padding: 0 24px 24px 24px;
+}
+.modal-footer {
+  padding: 12px 24px;
+  gap: 8px;
 }
 </style>

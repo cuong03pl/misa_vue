@@ -9,7 +9,20 @@
           id="selectAll"
         />
       </th>
-      <th v-for="(item, index) in data" :key="index">{{ item.title }}</th>
+      <th  v-for="(item, index) in data" :key="index">
+          <span>{{ item.title }}</span>
+      </th>
+
+
+      <!-- Option có filter -->
+      <!-- <th  class="cell-head" v-for="(item, index) in data" :key="index">
+        <div class="flex justify-between">
+          <span>{{ item.title }}</span>
+          <ms-button v-if="item.hasFilter" >
+            <i class="fa-solid fa-arrow-down"></i>
+          </ms-button>
+        </div>
+      </th> -->
     </tr>
   </thead>
 </template>
@@ -44,6 +57,7 @@ th {
   font-weight: 600;
   color: var(--text-color);
   white-space: nowrap;
+
 }
 input[type='checkbox'] {
   width: 16px;
@@ -52,5 +66,10 @@ input[type='checkbox'] {
 }
 .table-head {
   background: #f1f0f0;
+}
+
+/* Option có filter */
+.cell-head {
+  min-width: 200px;
 }
 </style>

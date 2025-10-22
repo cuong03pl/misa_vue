@@ -8,11 +8,13 @@ export const Candidate_header = [
     field: 'CandidateName',
     title: 'Họ và tên',
     type: 'text',
+    hasFilter: true,
   },
   {
     field: 'Mobile',
     title: 'Số điện thoại',
     type: 'phone',
+    hasFilter: true,
   },
   {
     field: 'Email',
@@ -23,6 +25,7 @@ export const Candidate_header = [
     field: 'JobPositionName',
     title: 'Chiến dịch tuyển dụng',
     type: 'text',
+    hasFilter: true,
   },
   {
     field: 'RecruitmentName',
@@ -33,6 +36,7 @@ export const Candidate_header = [
     field: 'RecruitmentRoundName',
     title: 'Vòng tuyển dụng',
     type: 'text',
+    hasFilter: true,
   },
   {
     field: 'Rating',
@@ -43,5 +47,6 @@ export const Candidate_header = [
     field: 'applyDate',
     title: 'Ngày ứng tuyển',
     type: 'date',
+    hasFilter: true,
   },
 ]
