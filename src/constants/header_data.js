@@ -5,24 +5,24 @@ export const Candidate_header = [
   //   type: 'text',
   // },
   {
-    field: 'CandidateName',
+    field: 'fullname',
     title: 'Họ và tên',
     type: 'text',
     hasFilter: true,
   },
   {
-    field: 'Mobile',
+    field: 'phone',
     title: 'Số điện thoại',
     type: 'phone',
     hasFilter: true,
   },
   {
-    field: 'Email',
+    field: 'email',
     title: 'Email',
     type: 'text',
   },
   {
-    field: 'JobPositionName',
+    field: 'position',
     title: 'Chiến dịch tuyển dụng',
     type: 'text',
     hasFilter: true,

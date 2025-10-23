@@ -8,7 +8,9 @@
     >
       <slot />
     </select>
-    <small v-if="isRequired" :class="['error-text', !error_message && 'show']">tét nè </small>
+    <small v-if="isRequired" :class="['error-text', !error_message && 'show']"
+      >{{ error_message }}
+    </small>
   </div>
 </template>
 

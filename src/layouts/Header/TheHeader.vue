@@ -13,7 +13,7 @@
     </div>
     <!-- Header right -->
     <div class="flex gap-12 header-right items-center">
-      <span class="icon"><i class="fa-solid fa-earth-americas"></i></span>
+      <span class="icon global-icon"></span>
       <span class="text">{{ t('header.link') }}</span>
       <span class="icon notification-icon">
         <i class="fa-regular fa-bell"></i>

@@ -2,7 +2,7 @@
   <ms-modal to="body" :isOpen="isOpen">
     <form @submit="onSubmit" class="modal-content rounded-md">
       <!-- head -->
-      <div class="modal-head  flex justify-between items-center">
+      <div class="modal-head flex justify-between items-center">
         <slot name="head">
           <span class="text-2xl font-bold">{{
             mode !== 'edit'
@@ -14,7 +14,7 @@
           ></span>
         </slot>
       </div>
-      <div class="scroll modal-body ">
+      <div class="scroll modal-body">
         <!-- upload -->
         <div class="upload flex flex-col items-center justify-center gap-12 rounded-md">
           <p class="upload-drag">Kéo thả hoặc bấm vào để tải CV</p>
@@ -122,7 +122,7 @@
             </div>
 
             <!-- apply date -->
-            <div class="flex justify-between gap-12 mt-5">
+            <div class="flex justify-between gap-12 mt-6">
               <div class="form-input flex flex-1 flex-col">
                 <ms-input label="Ngày ứng tuyển" type="date" />
               </div>
@@ -135,7 +135,7 @@
               </div>
             </div>
             <!-- CTV -->
-            <div class="flex justify-between gap-12 mt-5">
+            <div class="flex justify-between gap-12 mt-6">
               <div class="select-list flex flex-1 flex-col">
                 <ms-select label="Nhân sự khai thác">
                   <option value="default">Chọn giới tính</option>
@@ -152,7 +152,7 @@
               </div>
             </div>
             <!-- Nơi làm việc gần đây -->
-            <div class="flex justify-between gap-12 mt-5">
+            <div class="flex justify-between gap-12 mt-6">
               <ms-input
                 label="Nơi làm việc gần đây"
                 placeholder="Nhập nơi làm việc gần đây"
@@ -160,9 +160,9 @@
               />
             </div>
             <!-- Thời gian  -->
-            <div class="flex justify-between gap-12 mt-5">
+            <div class="flex justify-between gap-12 mt-6">
               <div class="flex flex-1 flex-col">
-                <span class="text-primary">Thời gian </span>
+                <span class="text-primary-original">Thời gian </span>
                 <div class="flex justify-between gap-12">
                   <div class="flex-1">
                     <ms-input label="" type="date" />
@@ -175,7 +175,7 @@
             </div>
 
             <!-- Vị trí công việc -->
-            <div class="flex justify-between gap-12 mt-5">
+            <div class="flex justify-between gap-12 mt-6">
               <ms-input
                 :isRequired="true"
                 label="Vị trí công việc"
@@ -189,22 +189,22 @@
             </div>
 
             <!-- Vị trí công việc -->
-            <div class="flex justify-between gap-12 mt-5">
+            <div class="flex justify-between gap-12 mt-6">
               <ms-textarea label="Mô tả công việc" placeholder="Nhập mô tả công việc" />
             </div>
-            <div class="flex justify-between gap-12 mt-5">
+            <div class="flex justify-between gap-12 mt-6">
               <ms-combobox label="Mô tả công việc" placeholder="Nhập mô tả công việc" />
             </div>
           </div>
         </div>
       </div>
 
-      <div class="modal-footer flex justify-end ">
+      <div class="modal-footer flex justify-end">
         <slot name="footer">
           <ms-button type="secondary" size="medium" @click="emit('update:isOpen', false)">{{
             t('common.button.cancel')
           }}</ms-button>
-          <ms-button  type="primary" size="medium">{{ t('common.button.save') }}</ms-button>
+          <ms-button type="primary" size="medium">{{ t('common.button.save') }}</ms-button>
         </slot>
       </div>
     </form>
@@ -218,6 +218,7 @@ import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Gender } from '@/constants/enum'
 import MsModal from '@/components/ms-modal/MsModal.vue'
+import { formatBirthday } from '@/utils/formatDate'
 const { t } = useI18n()
 //#region Props
 const props = defineProps({
@@ -231,12 +232,12 @@ const props = defineProps({
 watch(
   () => props.candidate,
   (newVal) => {
-    fullname.value = newVal?.CandidateName || ''
-    phone.value = newVal?.Mobile || ''
-    email.value = newVal?.Email || ''
-    position.value = newVal?.JobPositionName || ''
-    birthday.value = newVal?.Birthday || ''
-    gender.value = newVal.Gender || ''
+    fullname.value = newVal?.fullname || ''
+    phone.value = newVal?.phone || ''
+    email.value = newVal?.email || ''
+    position.value = newVal?.position || ''
+    birthday.value = formatBirthday(newVal?.birthday) || ''
+    gender.value = newVal.gender || ''
   },
 )
 //#endregion Watchers
@@ -270,8 +271,6 @@ const onSubmit = handleSubmit((values) => {
 </script>
 
 <style>
-
-
 .upload {
   padding: 32px 24px;
   border: 1px dashed #ccc;
@@ -323,6 +322,4 @@ const onSubmit = handleSubmit((values) => {
 .education ul li div input:focus {
   border: 1px solid var(--btn-primary);
 }
-
-
 </style>

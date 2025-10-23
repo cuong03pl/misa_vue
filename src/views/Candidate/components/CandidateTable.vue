@@ -7,9 +7,9 @@
     :rows="candidates"
     @getSelectRows="handleGetSelectedRows"
   >
-    <template #cell-CandidateName="{ row, value }">
+    <template #cell-fullname="{ row, value }">
       <div class="avatar-cell">
-        <div class="avatar flex items-center justify-center text-secondary yellow">
+        <div class="avatar flex items-center justify-center text-secondary-original yellow">
           {{ getAvatar(value) }}
         </div>
         <div :class="['user-info', row.isRecruited ? 'flex-col gap-2' : '']">
@@ -22,7 +22,7 @@
         </div>
       </div>
     </template>
-    <template #cell-RecruitmentRoundName="{ value }">
+    <template #cell-recruitmentRoundName="{ value }">
       <span class="status">{{ value }}</span>
     </template>
   </ms-table>

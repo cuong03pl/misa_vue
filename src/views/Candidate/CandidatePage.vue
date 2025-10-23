@@ -73,16 +73,21 @@ import CandidateModal from './components/CandidateModal.vue'
 import MsConfirmModal from '@/components/ms-modal/MsConfirmModal.vue'
 import { useToast } from 'vue-toastification'
 import MsToast from '@/components/ms-toast/MsToast.vue'
+import CandidateAPI from '@/apis/components/CandidateAPI'
 
 const { t } = useI18n()
 
 //#region Methods
 const fetchData = (newVal) => {
   candidates.value = Candidate_data.filter((item) =>
-    item.CandidateName.toLowerCase().includes(newVal.toLowerCase()),
+    item.fullname.toLowerCase().includes(newVal.toLowerCase()),
   )
 }
+CandidateAPI.getAll().then((response) => {
+  console.log(response.data)
 
+  candidates.value = response.data
+})
 const hanleToggleModal = () => {
   isOpen.value = !isOpen.value
 }
@@ -115,7 +120,7 @@ const handleDelete = () => {
 const isOpen = ref(false)
 const isOpenConfirm = ref(false)
 const selectedRows = ref([])
-const candidates = ref(_.cloneDeep(Candidate_data))
+const candidates = ref([])
 const q = ref('')
 const debouncedFetch = _.debounce(fetchData, 500)
 const toast = useToast()

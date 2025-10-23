@@ -23,6 +23,7 @@ defineProps({
   name: String,
   placeholder: String,
   isRequired: Boolean,
+  size: String,
   modelValue: String,
   error_message: String,
   flexRow: Boolean,

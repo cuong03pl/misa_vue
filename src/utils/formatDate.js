@@ -7,3 +7,8 @@
 export const formatDate = (date) => {
   return new Date(date).toLocaleDateString('vi-VN')
 }
+
+export const formatBirthday = (date) => {
+  if (!date) return null
+  return new Date(date).toISOString().split('T')[0]
+}

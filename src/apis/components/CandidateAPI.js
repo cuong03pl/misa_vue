@@ -1,10 +1,10 @@
 import api from '@/apis/config/APIConfig.js'
 import BaseAPI from '@/apis/base/BaseAPI.js'
 
-class TodosAPI extends BaseAPI {
+class CandidateAPI extends BaseAPI {
   constructor() {
     super()
-    this.controller = 'candadates'
+    this.controller = 'candidates'
   }
 
   /**
@@ -17,4 +17,4 @@ class TodosAPI extends BaseAPI {
   }
 }
 
-export default new TodosAPI()
+export default new CandidateAPI()

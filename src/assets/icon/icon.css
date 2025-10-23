@@ -10,8 +10,10 @@
   height: 7px;
 }
 .global-icon {
-  background: url('../ICON.svg') no-repeat 0 -304px;
-  background-size: 192px 704px;
-  width: 11px;
-  height: 11px;
+  mask-image: url('../ICON.svg');
+  mask-position: 0 -608px;
+  mask-repeat: no-repeat;
+  background-color: green;
+  width: 14px;
+  height: 14px;
 }
