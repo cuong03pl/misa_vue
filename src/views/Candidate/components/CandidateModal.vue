@@ -195,6 +195,9 @@
             <div class="flex justify-between gap-12 mt-6">
               <ms-combobox label="Mô tả công việc" placeholder="Nhập mô tả công việc" />
             </div>
+            <div class="flex justify-between gap-12 mt-6">
+              <ms-date-picker />
+            </div>
           </div>
         </div>
       </div>

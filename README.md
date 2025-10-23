@@ -24,3 +24,5 @@ Phân vùng và comment hàm
   combox vừa tìm kiếm vừa select
   Custom button, text input, dropdownlist, combobox, datepicker theo style guild
   focus ô đầu
+
+/// ẩn cái title đi, sẽ tự custom cái tháng năm đó vào 1 cái thẻ div rồi dùng slot header, xử lý ấn nút đó thì hiện cái select month ra là ok
